@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_membership_privileges"
+        android:layout_width="@dimen/dp_55"
+        android:layout_height="@dimen/dp_55"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"
+        />
+    <TextView
+        android:id="@+id/tv_membership_privileges_tips"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorEF4"
+        android:text="省400%"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_10"
+        />
+    <TextView
+        android:id="@+id/tv_membership_privileges_name"
+        android:layout_below="@+id/iv_membership_privileges"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:textColor="@color/color66"
+        android:layout_height="wrap_content"
+       android:textSize="@dimen/sp_12"
+        />
+
+</RelativeLayout>

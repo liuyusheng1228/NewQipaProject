@@ -1,0 +1,131 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+//apply plugin: 'com.github.dcendents.android-maven'
+//应用到Maven
+apply plugin: 'maven'
+//apply from: '../MobSDK.gradle'
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 25
+        versionName "1.2.5"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories  {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    sourceSets {
+        main {
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation project(":qipanetwork")
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //kotlin
+    api"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'androidx.core:core-ktx:1.3.2'
+    //lifecycle
+    api 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0'
+    api 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    // viewModel
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
+    api "androidx.fragment:fragment-ktx:1.3.1"
+    // liveData
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    api 'com.kunminx.archi:unpeek-livedata:4.4.1-beta1'
+    //navigation
+    api 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    api 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:2.9.0"
+    api "com.squareup.retrofit2:converter-gson:2.9.0"
+    api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    //动态替换BaseUrl库 使用可参考 https://github.com/JessYanCoding/RetrofitUrlManager
+    api 'me.jessyan:retrofit-url-manager:1.4.0'
+    api 'com.github.AnJiaoDe:StatusNavigationTransparent:V1.2.4'
+    api 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+
+    //微信支付
+    api 'com.tencent.mm.opensdk:wechat-sdk-android:+'
+//    implementation 'androidx.appcompat:appcompat:1.4.0'
+//    implementation 'com.google.android.material:material:1.4.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    api 'androidx.appcompat:appcompat:1.4.0'
+    api 'com.google.android.material:material:1.4.0'
+    api 'androidx.constraintlayout:constraintlayout:2.1.2'
+    //支付宝支付
+    provided (name: 'alipaysdk-15.8.06.211122170115', ext: 'aar')
+
+    //google支付
+    api 'com.android.billingclient:billing-ktx:4.0.0'
+    api 'com.blankj:utilcodex:1.30.6'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    //glide
+    api 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    api 'jp.wasabeef:glide-transformations:4.3.0'
+    //曲线图
+    api 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+}
+//源代码打包(需要打包源代码时添加以下配置)
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+artifacts {
+    archives androidSourcesJar
+}
+repositories {
+    mavenCentral()
+}
+
+//上传到Maven仓库的task
+uploadArchives {
+    repositories.mavenDeployer {
+            //指定maven的仓库url，IP+端口+目录
+            repository(url: "http://localhost:8081/nexus/content/repositories/releases/") {
+                //填写你的Nexus的账号密码
+                authentication(userName: "admin", password: "qipa123456")
+            }
+            // 唯一标识 一般为模块包名 也可其他
+            pom.groupId = "com.qipa.jetpackmvvm"
+            // 项目名称（一般为模块名称 也可其他
+            pom.artifactId = "baseqipajetpackmvvm"
+            // 发布的版本号
+            pom.version = "1.0.0"
+
+    }
+}
+

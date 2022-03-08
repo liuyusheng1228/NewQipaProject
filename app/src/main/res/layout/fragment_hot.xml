@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/windowBackground">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <include
+                        android:id="@+id/hot_banner"
+                        layout="@layout/include_banner" />
+
+                    <com.qipa.newboxproject.app.weight.transformerslayout.TransformersLayout
+                        android:id="@+id/tab_show_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:tl_lines="1"
+                        app:tl_pagingMode="true"
+                        app:tl_scrollBarMarginBottom="@dimen/dp_6"
+                        app:tl_scrollbarHeight="@dimen/dp_4"
+                        app:tl_scrollbarMarginTop="@dimen/dp_6"
+                        app:tl_scrollbarRadius="@dimen/dp_2"
+                        app:tl_scrollbarThumbColor="#FFC107"
+                        app:tl_scrollbarThumbFixedMode="true"
+                        app:tl_scrollbarThumbFixedWidth="@dimen/dp_12"
+                        app:tl_scrollbarTrackColor="#f0f0f0"
+                        app:tl_scrollbarWidth="@dimen/dp_72"
+                        app:tl_spanCount="5"
+                        bind:ignore="MissingClass" />
+
+                    <com.yanzhenjie.recyclerview.SwipeRecyclerView
+                        android:id="@+id/hot_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+
+                    <!--        <include layout="@layout/include_list"/>-->
+
+                </LinearLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/hot_floatbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:scaleType="center"
+                    android:src="@mipmap/fab_up"
+                    android:visibility="invisible"
+                    app:elevation="@dimen/dp_5"
+                    app:fabSize="mini"
+                    app:layout_behavior="com.qipa.newboxproject.app.weight.recyclerview.FatScrollAwareFABBehavior" />
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.qipa.newboxproject.viewmodel.state.HotModel" />
+
+        <variable
+            name="click"
+            type="com.qipa.newboxproject.ui.fragment.home.HotFragment.ProxyClick" />
+
+    </data>
+</layout>

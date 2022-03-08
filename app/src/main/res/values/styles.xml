@@ -1,0 +1,226 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/tranaction</item>
+        <item name="colorPrimaryDark">@color/tranaction</item>
+        <item name="colorAccent">@color/tranaction</item>
+        <item name="md_corner_radius">12dp</item>
+    </style>
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+
+        <item name="android:button">@drawable/checkbox_style</item>
+
+    </style>
+    <declare-styleable name="SwitchButton">
+        <attr name="kswThumbDrawable" format="reference" />
+        <attr name="kswThumbColor" format="color|reference" />
+        <attr name="kswThumbMargin" format="dimension|reference" />
+        <attr name="kswThumbMarginTop" format="dimension|reference" />
+        <attr name="kswThumbMarginBottom" format="dimension|reference" />
+        <attr name="kswThumbMarginLeft" format="dimension|reference" />
+        <attr name="kswThumbMarginRight" format="dimension|reference" />
+        <attr name="kswThumbWidth" format="dimension|reference" />
+        <attr name="kswThumbHeight" format="dimension|reference" />
+        <attr name="kswThumbRadius" format="dimension|reference" />
+        <attr name="kswBackRadius" format="dimension|reference" />
+        <attr name="kswBackDrawable" format="reference" />
+        <attr name="kswBackColor" format="color|reference" />
+        <attr name="kswFadeBack" format="boolean" />
+        <attr name="kswBackMeasureRatio" format="float" />
+        <attr name="kswAnimationDuration" format="integer" />
+        <attr name="kswTintColor" format="color|reference" />
+        <attr name="kswTextOn" format="string" />
+        <attr name="kswTextOff" format="string" />
+        <attr name="kswTextMarginH" format="dimension" />
+    </declare-styleable>
+
+    <!--设置-->
+    <declare-styleable name="SettingItemView">
+        <attr name="item_image" format="reference" />
+        <attr name="item_image_height" format="dimension" />
+        <attr name="item_image_width" format="dimension" />
+        <attr name="item_content" format="string" />
+        <attr name="item_content_text_size" format="dimension" />
+        <attr name="item_content_text_color" format="color" />
+        <attr name="item_value" format="string" />
+        <attr name="item_value_text_size" format="dimension" />
+        <attr name="item_value_text_color" format="color" />
+        <attr name="item_divider" format="boolean" />
+        <attr name="item_tag_image_height" format="dimension" />
+        <attr name="item_tag_image_width" format="dimension" />
+        <attr name="item_tag_image" format="reference" />
+        <attr name="item_switch" format="boolean" />
+        <attr name="item_background" format="reference" />
+        <attr name="item_null_background" format="boolean" />
+        <attr name="item_show_selected" format="boolean" />
+        <attr name="item_selected_image" format="reference" />
+        <attr name="item_right_image" format="reference" />
+        <attr name="item_right_image_width" format="dimension" />
+        <attr name="item_right_image_height" format="dimension" />
+
+    </declare-styleable>
+
+    <declare-styleable name="InfoButton">
+        <attr name="icon" format="reference" />
+        <attr name="iconSize" format="dimension|reference" />
+        <attr name="iconPadding" format="dimension|reference" />
+        <attr name="label" format="string|reference" />
+        <attr name="labelTextColor" format="color|reference" />
+        <attr name="labelTextSize" format="dimension|reference" />
+        <attr name="info" format="string|reference" />
+        <attr name="infoTextColor" format="color|reference" />
+        <attr name="infoTextSize" format="dimension|reference" />
+        <attr name="infoMultiLine" format="boolean" />
+        <attr name="hint" format="string|reference" />
+        <attr name="hintTextColor" format="color|reference" />
+        <attr name="forwardIcon" format="reference" />
+        <attr name="showIcon" format="boolean" />
+        <attr name="showIconNext" format="boolean" />
+        <attr name="gravityAtEnd" format="boolean" />
+        <attr name="contentPadding" />
+    </declare-styleable>
+    <style name="Widget.Theme.NewBoxProject.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="CustomDialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!--弧形的界面属性-->
+    <declare-styleable name="ArcView">
+        <attr name="arcHeight" format="dimension"/>
+        <attr name="lgColor"   format="color"/>
+        <attr name="bgColor" format="color"/>
+    </declare-styleable>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/BottomShowAnimation</item>
+        <!--弹窗背景是否变暗-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <!-- dialog从ios效果动画 -->
+    <style name="BottomShowAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/nav_default_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/nav_default_exit_anim</item>
+
+    </style>
+    <declare-styleable name="RatingBar">
+        <!--未选中-->
+        <attr name="starEmptyRes" format="reference" />
+        <!--选中半个-->
+        <attr name="starHalfRes" format="reference" />
+        <!--选中全部-->
+        <attr name="starSelectedRes" format="reference" />
+        <!--星星的总数-->
+        <attr name="startTotalNumber" format="integer" />
+        <!--默认选中的数量 -->
+        <attr name="selectedNumber" format="float" />
+        <!--星星的间距-->
+        <attr name="starDistance" format="dimension" />
+        <!--星星的宽度-->
+        <attr name="starWidth" format="dimension" />
+        <!--星星的高度-->
+        <attr name="starHeight" format="dimension" />
+        <!--是不是只画整个星星，不画半个-->
+        <attr name="starIsFull" format="boolean" />
+    </declare-styleable>
+
+    <style name="myNavigationDrawerStyle" >
+        <item name="android:textSize">8sp</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!-- 自定义Dialog主题 考虑到好像就一个dialog，就没集成BottomSheet了 -->
+    <style name="BottomDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowAnimationStyle">@style/BottomDialogAnimation</item>
+    </style>
+    <!-- 自定义Dialog动画 -->
+    <style name="BottomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 遮罩层 -->
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+
+    <style name="Widget.AppTheme.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="WheelDefault">
+        <item name="wheel_itemTextColor">@android:color/darker_gray</item>
+        <item name="wheel_itemTextColorSelected">@android:color/holo_blue_dark</item>
+        <item name="wheel_itemTextSize">@dimen/sp_11</item>
+        <item name="wheel_itemTextSizeSelected">@dimen/sp_11</item>
+        <item name="wheel_itemTextBoldSelected">false</item>
+        <item name="wheel_sameWidthEnabled">false</item>
+        <item name="wheel_atmosphericEnabled">true</item>
+        <item name="wheel_curtainEnabled">false</item>
+        <item name="wheel_curvedEnabled">false</item>
+        <item name="wheel_curvedMaxAngle">90</item>
+        <item name="wheel_cyclicEnabled">false</item>
+        <item name="wheel_indicatorEnabled">true</item>
+        <item name="wheel_dayLabel">@string/day</item>
+        <item name="wheel_monthLabel">@string/month</item>
+        <item name="wheel_yearLabel">@string/year</item>
+        <item name="wheel_indicatorColor">@android:color/holo_blue_light</item>
+        <item name="wheel_indicatorSize">1dp</item>
+    </style>
+
+    <style name="WheelStyleDemo">
+        <item name="wheel_itemTextColor">@android:color/holo_green_dark</item>
+        <item name="wheel_itemTextColorSelected">@android:color/holo_green_light</item>
+        <item name="wheel_itemTextSize">20sp</item>
+        <item name="wheel_itemTextSizeSelected">22sp</item>
+        <item name="wheel_itemTextBoldSelected">true</item>
+        <item name="wheel_sameWidthEnabled">false</item>
+        <item name="wheel_atmosphericEnabled">true</item>
+        <item name="wheel_curtainEnabled">false</item>
+        <item name="wheel_curvedEnabled">false</item>
+        <item name="wheel_curvedMaxAngle">60</item>
+        <item name="wheel_cyclicEnabled">true</item>
+        <item name="wheel_indicatorEnabled">true</item>
+        <item name="wheel_indicatorColor">@android:color/holo_green_dark</item>
+        <item name="wheel_indicatorSize">1dp</item>
+    </style>
+
+</resources>

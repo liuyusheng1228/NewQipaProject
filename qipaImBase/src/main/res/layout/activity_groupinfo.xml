@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    android:orientation="vertical">
+
+    <com.qipa.qipaimbase.view.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/title_margin_top"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="11sp"
+                    android:textColor="@color/chat_toast_bg"
+                    android:text="@string/chat_group_name" />
+
+                <TextView
+                    android:id="@+id/tvGroupName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="@color/chat_toast_bg"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="30dp"
+                    android:text="@string/nothing" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/arrow_right" />
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/title_margin_top"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="11sp"
+                    android:textColor="@color/chat_toast_bg"
+                    android:text="@string/chat_group_announcement" />
+
+                <TextView
+                    android:id="@+id/tvNotic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="30dp"
+                    android:textSize="11sp"
+                    android:textColor="@color/chat_toast_bg"
+                    android:text="@string/nothing" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/arrow_right" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/title_margin_top"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_padding">
+
+                <FrameLayout
+                    android:id="@+id/flMemberRoot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="11sp"
+                        android:textColor="@color/chat_toast_bg"
+                        android:text="@string/chat_group_members" />
+
+                    <TextView
+                        android:id="@+id/tvMemberCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_marginRight="30dp"
+                        android:textSize="11sp"
+                        android:textColor="@color/chat_toast_bg"
+                        android:text="0人" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/arrow_right" />
+                </FrameLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/title_margin_top2x"
+                android:visibility="gone"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="11sp"
+                    android:textColor="@color/chat_toast_bg"
+                    android:text="查看聊天内容" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/arrow_right" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/title_margin_top"
+                android:background="@color/white"
+                android:padding="@dimen/activity_padding"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chatset_top" />
+
+                <Switch
+                    android:id="@+id/sTop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/title_margin_top2x"
+                android:background="@color/white"
+                android:padding="@dimen/activity_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="@color/chat_toast_bg"
+                    android:text="@string/chatset_ban" />
+
+                <Switch
+                    android:id="@+id/sIgnore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

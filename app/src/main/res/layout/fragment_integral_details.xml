@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.qipa.newboxproject.viewmodel.state.IntegralDetailsModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <com.cy.translucentparent.StatusBarView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"/>
+        <include layout="@layout/include_back"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_80"
+            android:orientation="horizontal"
+            android:background="@drawable/gradual_left_color_bg"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_20"
+                android:textColor="@color/white"
+                android:text="70"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/white"
+                android:text="积分"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/dp_2"
+                android:layout_gravity="center_vertical"
+                />
+
+            <ImageView
+                android:layout_width="@dimen/dp_15"
+                android:layout_height="@dimen/dp_15"
+                android:src="@mipmap/icon_yiwen"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:tint="@color/white"
+                />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:text="@string/btn_points_mall"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:background="@drawable/bg_trans_button_2_round_10dp"
+                android:layout_marginRight="@dimen/dp_15"
+                />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_integral_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</layout>

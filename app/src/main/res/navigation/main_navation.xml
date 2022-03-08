@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navation"
+    app:startDestination="@id/mainfragment">
+
+    <fragment
+        android:id="@+id/mainfragment"
+        android:name="com.qipa.newboxproject.ui.fragment.MainFragment"
+        android:label="MainFragment">
+
+        <action
+            android:id="@+id/action_mainfragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_myGameListFragment"
+            app:destination="@id/MyGameListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_lookInfoFragment"
+            app:destination="@id/userEvaluateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_missionHallFragment"
+            app:destination="@id/missionHallFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_collectFragment"
+            app:destination="@id/inputCommentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_qipaMemberFragment"
+            app:destination="@id/qipaMemberFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_personalInformationFragment"
+            app:destination="@id/personalInformationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_myCustomerServiceFragment"
+            app:destination="@id/myCustomerServiceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_to_downLoadLibraryFragment"
+            app:destination="@id/platformCurrencyRechargeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_mainfragment_action_to_rechargeRebateFragment"
+            app:destination="@id/rechargeRebateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_action_to_downLoadFragment"
+            app:destination="@id/downLoadFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <action
+        android:id="@+id/action_personinfor_to_unbandPhoneFragment"
+        app:destination="@id/unbandPhoneFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_personinfor_to_BandPhoneFragment"
+        app:destination="@id/bindPhoneFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_to_rechargeInterfaceFragment"
+        app:destination="@id/rechargeInterfaceFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.login.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFrgment"
+            app:destination="@id/registerFrgment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFrgment"
+        android:name="com.qipa.newboxproject.ui.fragment.login.RegisterFrgment"
+        android:label="RegisterFrgment">
+
+        <action
+            android:id="@+id/action_registerFrgment_to_mainFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/mainfragment" />
+
+        <action
+            android:id="@+id/action_registerFrgment_to_loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/loginFragment" />
+
+        <action
+            android:id="@+id/action_registerFrgment_to_searchResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/searchResultFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.search.SearchFragment"
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.search.SearchResultFragment"
+        android:label="SearchResultFragment"
+        app:startDestination="@id/action_searchResultFragment_to_lookInfoFragment">
+        <action
+            android:id="@+id/action_searchResultFragment_to_lookInfoFragment"
+            app:destination="@id/userEvaluateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameDetailFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.detail.GameDetailFragment"
+        android:label="GameDetailFragment" >
+        <action
+            android:id="@+id/action_gameDetailFragment_to_userEvaluateFragment"
+            app:destination="@id/userEvaluateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_gameDetailFragment_to_inputCommentFragment"
+            app:destination="@id/inputCommentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MyGameListFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.MyGameListFragment"
+        android:label="MyGameListFragment"
+        app:destination="@id/loginFragment">
+        <action
+            android:id="@+id/action_systemArrFragment_to_lookInfoFragment"
+            app:destination="@id/userEvaluateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/userEvaluateFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.detail.UserEvaluateFragment"
+        android:label="UserEvaluateFragment" />
+    <fragment
+        android:id="@+id/inputCommentFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.detail.InputCommentFragment"
+        android:label="InputCommentFragment">
+        <action
+            android:id="@+id/action_integralFragment_to_integralHistoryFragment"
+            app:destination="@id/missionHallFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>>
+    <fragment
+        android:id="@+id/missionHallFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.message.MissionHallFragment"
+        android:label="MissionHallFragment" >
+        <action
+            android:id="@+id/action_missionHallFragment_to_integralDetailsFragment"
+            app:destination="@id/integralDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/integralDetailsFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.message.IntegralDetailsFragment"
+        android:label="IntegralDetailsFragment" />
+
+    <fragment
+        android:id="@+id/qipaMemberFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.message.member.QipaMemberFragment"
+        android:label="QipaMemberFragment" />
+    <fragment
+        android:id="@+id/unbandPhoneFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.set.UnbandPhoneFragment"
+        android:label="UnbandPhoneFragment">
+        <action
+            android:id="@+id/action_ariticleFragment_to_addAriticleFragment"
+            app:destination="@id/qipaMemberFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInformationFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.set.PersonalInformationFragment"
+        android:label="PersonalInformationFragment">
+        <action
+            android:id="@+id/action_personalInformationFragment_to_mobileLoginFragment"
+            app:destination="@id/action_to_mobileLoginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+    <action
+        android:id="@+id/action_personalInformationFragment_to_realNameAuthenticationFragment"
+        app:destination="@id/realNameAuthenticationFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <fragment
+        android:id="@+id/action_to_mobileLoginFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.login.MobileLoginFragment"
+        android:label="MobileLoginFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        />
+
+    <fragment
+        android:id="@+id/rechargeInterfaceFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.pay.RechargeInterfaceFragment"
+        android:label="RechargeInterfaceFragment">
+
+        <action
+            android:id="@+id/action_demoFragment_to_downLoadFragment"
+            app:destination="@id/complaintsAndSuggestionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_demoFragment_to_downLoadLibraryFragment"
+            app:destination="@id/platformCurrencyRechargeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_gameDetailFragment"
+        app:destination="@id/gameDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_to_loginFragment"
+        app:destination="@id/loginFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_to_pointsMallFragment"
+        app:destination="@id/pointsMallFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_to_chatFragment"
+        app:destination="@id/chatFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.set.SettingFragment"
+        android:label="SettingFragment">
+        <action
+            android:id="@+id/settingFragment_action_to_accountAndsecurityFragment"
+            app:destination="@id/accountAndsecurityFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/settingFragment_action_to_changeLanguageFragment"
+            app:destination="@id/changeLanguageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCustomerServiceFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.MyCustomerServiceFragment"
+        android:label="MyCustomerServiceFragment" >
+        <action
+            android:id="@+id/myCustomerServiceFragment_action_to_complaintsAndSuggestionsFragment"
+            app:destination="@id/complaintsAndSuggestionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/complaintsAndSuggestionsFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.ComplaintsAndSuggestionsFragment"
+        android:label="ComplaintsAndSuggestionsFragment" />
+    <fragment
+        android:id="@+id/platformCurrencyRechargeFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.pay.PlatformCurrencyRechargeFragment"
+        android:label="PlatformCurrencyRechargeFragment" >
+        <action
+            android:id="@+id/platformCurrencyRechargeFragment_action_to_platformCurrencyDetailsFragment"
+            app:destination="@id/platformCurrencyDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/rechargeRebateFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.RechargeRebateFragment"
+        android:label="RechargeRebateFragment" />
+    <fragment
+        android:id="@+id/platformCurrencyDetailsFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.pay.PlatformCurrencyDetailsFragment"
+        android:label="PlatformCurrencyDetailsFragment" />
+
+    <fragment
+        android:id="@+id/realNameAuthenticationFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.set.RealNameAuthenticationFragment"
+        android:label="RealNameAuthenticationFragment"
+        />
+    <fragment android:id="@+id/downLoadFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.download.DownLoadFragment"
+        android:label="DownLoadFragment"
+        />
+    <fragment android:id="@+id/accountAndsecurityFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.set.AccountAndsecurityFragment"
+        android:label="AccountAndsecurityFragment"
+        />
+    <fragment android:id="@+id/pointsMallFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.message.PointsMallFragment"
+        android:label="PointsMallFragment"
+        />
+    <fragment android:id="@+id/chatFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.chat.ChatFragment"
+        android:label="ChatFragment"
+        />
+
+    <fragment android:id="@+id/changeLanguageFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.set.ChangeLanguageFragment"
+        android:label="ChangeLanguageFragment"
+        />
+
+    <fragment android:id="@+id/bindPhoneFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.me.BindPhoneFragment"
+        android:label="BindPhoneFragment"
+        />
+
+</navigation>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/dp_10"
+    >
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_vedio"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="@dimen/dp_180"
+        app:cardCornerRadius="@dimen/dp_6"
+        app:layout_constraintDimensionRatio="16:9"
+        >
+        <com.qipa.newboxproject.app.weight.video.QipaQPvdStd
+            android:id="@+id/item_nice_video_player"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_180"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_vie"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="@dimen/dp_180"
+        app:cardCornerRadius="@dimen/dp_6"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="16:9"
+        >
+        <ImageView
+            android:id="@+id/iv_show_grade"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_vie2"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_180"
+        app:cardCornerRadius="@dimen/dp_6"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="16:9"
+        >
+        <ImageView
+            android:id="@+id/iv_show_grade_xu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app ="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="viewModle"
+            type="com.qipa.newboxproject.viewmodel.state.UserEvaluateModel" />
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <com.cy.translucentparent.StatusBarView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/teal_200"
+            />
+        <include layout="@layout/include_back"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recommend"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_15"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_15"
+                />
+
+            <com.qipa.newboxproject.app.weight.RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                app:starHeight="@dimen/dp_20"
+                app:starWidth="@dimen/dp_20"
+                app:selectedNumber="0"
+                app:starDistance="@dimen/dp_6"
+                app:starEmptyRes="@mipmap/star_normal"
+                app:starHalfRes="@mipmap/star_half"
+                app:starIsFull="false"
+                app:starSelectedRes="@mipmap/star_selected"
+                />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:background="@color/colorDD"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_200"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@color/texttipColor"
+            android:text="@={viewModle.editusercomment}"
+            android:hint="您可以从玩法,画质,福利等方面来进行评价"
+            android:gravity="left"
+            android:background="@null"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_images"
+            android:paddingTop="@dimen/dp_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

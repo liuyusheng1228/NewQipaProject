@@ -1,0 +1,9 @@
+
+rootProject.name = "NewBoxProject"
+include ':app'
+//include ':qipanetwork'
+include 'baseqipajetpackmvvm'
+include ':qipaImBase'
+include ':opuslib'
+include ':qipanetwork'
+include ':qipavideoplayer'

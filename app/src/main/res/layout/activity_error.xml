@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:src="@drawable/customactivityoncrash_error_image" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:gravity="center"
+                    android:lineSpacingMultiplier="1.5"
+                    android:text="error"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/errorRestart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="@string/restart"
+                    android:textSize="@dimen/sp_12" />
+
+                <Button
+                    android:id="@+id/errorSendError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="@string/escalation_administrator"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

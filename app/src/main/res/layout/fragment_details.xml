@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.qipa.newboxproject.viewmodel.state.DetailModel" />
+        <variable
+            name="click"
+            type="com.qipa.newboxproject.ui.fragment.detail.DetailsFragment.ProxyClick" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <com.qipa.newboxproject.app.weight.recyclerview.HorizontalRecyclerView
+            android:id="@+id/list_pic_vedios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_game_introduce"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/black"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_15"
+            />
+
+        <com.qipa.newboxproject.app.weight.textview.SeeMoreView
+            android:id="@+id/tv_game_introduce_msg"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+
+    </LinearLayout>
+
+
+</layout>

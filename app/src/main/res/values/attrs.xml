@@ -1,0 +1,151 @@
+<resources>
+    <declare-styleable name="FullscreenAttrs">
+        <attr name="fullscreenBackgroundColor" format="color" />
+        <attr name="fullscreenTextColor" format="color" />
+    </declare-styleable>
+    <!--金额 样式  元大 角分小 $25.33-->
+    <declare-styleable name="MoneyView">
+        <!--金额-->
+        <attr name="money_text" format="string"/>
+        <!--金额颜色-->
+        <attr name="money_color" format="color"/>
+        <!--元大小-->
+        <attr name="yuan_size" format="dimension"/>
+        <!--分大小-->
+        <attr name="cent_size" format="dimension"/>
+        <!--前缀文本-->
+        <attr name="prefix_text" format="string"/>
+        <!--前缀大小-->
+        <attr name="prefix_size" format="dimension"/>
+        <!--前缀颜色-->
+        <attr name="prefix_color" format="color"/>
+        <!--前缀右边距-->
+        <attr name="prefix_padding" format="dimension"/>
+        <!--小数点左边距-->
+        <attr name="point_padding_left" format="dimension"/>
+        <!--小数点右边距-->
+        <attr name="point_padding_right" format="dimension"/>
+        <!--是否使用千分符-->
+        <attr name="grouping" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="NiceImageView">
+        <attr name="is_circle" format="boolean" />
+        <attr name="is_cover_src" format="boolean" />
+        <attr name="corner_radius" format="dimension" />
+        <attr name="corner_top_left_radius" format="dimension" />
+        <attr name="corner_top_right_radius" format="dimension" />
+        <attr name="corner_bottom_left_radius" format="dimension" />
+        <attr name="corner_bottom_right_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="inner_border_width" format="dimension" />
+        <attr name="inner_border_color" format="color" />
+        <attr name="mask_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="TransformersLayout">
+        <!--每页几列-->
+        <attr name="tl_spanCount" format="integer"/>
+        <!--每页几行-->
+        <attr name="tl_lines" format="integer"/>
+        <!--分页模式-->
+        <attr name="tl_pagingMode" format="boolean"/>
+        <!--滚动条宽度-->
+        <attr name="tl_scrollbarWidth" format="dimension|reference"/>
+        <!--滚动条高度-->
+        <attr name="tl_scrollbarHeight" format="dimension|reference"/>
+        <!--滚动条上间距-->
+        <attr name="tl_scrollbarMarginTop" format="dimension|reference"/>
+        <!--滚动条下间距-->
+        <attr name="tl_scrollBarMarginBottom" format="dimension|reference"/>
+        <!--滚动条圆角-->
+        <attr name="tl_scrollbarRadius" format="dimension|reference"/>
+        <!--滚动条轨道颜色-->
+        <attr name="tl_scrollbarTrackColor" format="color|reference"/>
+        <!--滚动条滑块颜色-->
+        <attr name="tl_scrollbarThumbColor" format="color|reference"/>
+        <!--滚动条滑块宽度固定模式-->
+        <attr name="tl_scrollbarThumbFixedMode" format="boolean"/>
+        <!--滚动条滑块宽度-->
+        <attr name="tl_scrollbarThumbFixedWidth" format="dimension|reference"/>
+    </declare-styleable>
+    <declare-styleable name="PxBlurringView">
+        <attr name="blurRadius" format="integer"/>
+        <attr name="downsampleFactor" format="integer"/>
+        <attr name="overlayColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="DownloadProgressButton">
+        <attr name="progress_btn_radius" format="dimension" />
+        <attr name="progress_btn_background_color" format="color" />
+        <attr name="progress_btn_background_second_color" format="color" />
+        <attr name="progress_btn_text_color" format="color" />
+        <attr name="progress_btn_text_cover_color" format="color" />
+        <attr name="progress_btn_border_width" format="dimension" />
+        <attr name="progress_btn_ball_style" format="enum">
+            <enum name="STYLE_BALL_PULSE" value="1" />
+            <enum name="STYLE_BALL_JUMP" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="EhireCountEditText">
+        <!--设置默认文字-->
+        <attr name="etText" format="string" />
+        <!--设置提示文字-->
+        <attr name="etHint" format="string" />
+        <!--设置提示文字颜色-->
+        <attr name="etHintColor" format="color" />
+        <!--设置最小高度-->
+        <attr name="etMinHeight" format="dimension" />
+        <!--设置最大长度-->
+        <attr name="etMaxLength" format="integer" />
+        <!--设置横线颜色-->
+        <attr name="etLineColor" format="color" />
+        <!--设置输入文字大小-->
+        <attr name="etTextSize" format="dimension" />
+        <!--设置输入文字颜色-->
+        <attr name="etTextColor" format="color" />
+        <!--设置提示统计文字大小-->
+        <attr name="etPromptTextSize" format="dimension" />
+        <!--设置提示统计文字颜色-->
+        <attr name="etPromptTextColor" format="color" />
+        <!--设置提示统计文字颜色，只包括、左边的内容-->
+        <attr name="etPromptTextLeftColor" format="color" />
+        <!--设置提示统计显示类型-->
+        <attr name="etType">
+            <!--单数类型-->
+            <enum name="singular" value="0" />
+            <!--百分比类型-->
+            <enum name="percentage" value="1" />
+        </attr>
+        <!--设置提示统计显示类型位置-->
+        <attr name="etPromptPosition">
+            <!--上方-->
+            <enum name="promptUp" value="0" />
+            <!--下方-->
+            <enum name="promptDn" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="YanDeleteEditText">
+
+        <attr name="ic_delete" format="reference" />
+        <attr name="delete_x" format="integer"  />
+        <attr name="delete_y" format="integer"  />
+        <attr name="delete_width" format="integer"  />
+        <attr name="delete_height" format="integer"  />
+
+        <attr name="ic_left_click" format="reference" />
+        <attr name="ic_left_unclick" format="reference" />
+        <attr name="left_x" format="integer"  />
+        <attr name="left_y" format="integer"  />
+        <attr name="left_width" format="integer"  />
+        <attr name="left_height" format="integer"  />
+
+        <attr name="lineColor_click" format="color"  />
+        <attr name="lineColor_unclick" format="color"  />
+        <attr name="linePosition" format="integer"  />
+
+        <attr name="cursor" format="reference" />
+
+    </declare-styleable>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DecimalEditText">
+        <!-- 小数的位数 -->
+        <attr name="quick_decimalLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="PayPwdInputView">
+        <attr name="quick_maxCount" format="integer" />
+        <attr name="quick_circleColor" format="color" />
+        <attr name="quick_textSize" format="dimension" />
+        <attr name="quick_bottomLineColor" format="color" />
+        <attr name="quick_pwdRadius" format="dimension" />
+        <attr name="quick_divideLineWidth" format="dimension" />
+        <attr name="quick_divideLineColor" format="color" />
+        <attr name="quick_rectAngle" format="dimension" />
+        <attr name="quick_isPwd" format="boolean" />
+        <attr name="quick_autoSize" format="boolean" />
+        <attr name="quick_psdType" format="enum">
+            <enum name="weChat" value="0" />
+            <enum name="bottomLine" value="1" />
+            <enum name="block" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CircleProgressView">
+        <attr name="quick_progressNormalColor" format="color"/>
+        <attr name="quick_progressReachColor" format="color"/>
+        <attr name="quick_progressTextColor" format="color"/>
+        <attr name="quick_progressTextSize" format="dimension"/>
+        <attr name="quick_progressTextOffset" format="dimension"/>
+        <attr name="quick_progressNormalSize" format="dimension"/>
+        <attr name="quick_progressReachSize" format="dimension"/>
+        <attr name="quick_radius" format="dimension"/>
+        <attr name="quick_progressTextVisible" format="boolean"/>
+        <attr name="quick_progressStartArc" format="integer"/>
+        <attr name="quick_progressTextSkewX" format="dimension"/>
+        <attr name="quick_progressTextPrefix" format="string"/>
+        <attr name="quick_progressTextSuffix" format="string"/>
+        <attr name="quick_innerBackgroundColor" format="color"/>
+        <attr name="quick_progressStyle" format="enum">
+            <enum name="Normal" value="0"/>
+            <enum name="FillInner" value="1"/>
+            <enum name="FillInnerArc" value="2"/>
+            <enum name="FillInnerSquare" value="3"/>
+        </attr>
+        <attr name="quick_innerProgressColor" format="color"/>
+        <attr name="quick_innerPadding" format="dimension"/>
+        <attr name="quick_outerColor" format="color"/>
+        <attr name="quick_outerSize" format="dimension"/>
+        <attr name="quick_reachCapRound" format="boolean"/>
+    </declare-styleable>
+</resources>

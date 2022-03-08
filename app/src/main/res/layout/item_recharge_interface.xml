@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dp_100"
+    android:layout_height="@dimen/dp_110"
+    android:id="@+id/item_recharge_interface"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:background="@drawable/bg_round_grey_white_4dp"
+    >
+
+    <TextView
+        android:id="@+id/tv_card_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mainColor"
+        android:textSize="@dimen/sp_12"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_centerHorizontal="true"
+        android:text="7天"
+        />
+
+    <com.qipa.newboxproject.app.weight.customview.MoneyView
+        android:id="@+id/txt_money_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:money_text="12.9"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_below="@+id/tv_card_day"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_money_not_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_money_value"
+        android:textSize="@dimen/sp_10"
+        android:text="18.00"
+        android:textColor="@color/gray_1A000000"
+        android:layout_marginTop="@dimen/dp_3"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_money_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_money_not_value"
+        android:textSize="@dimen/sp_8"
+        android:text="@string/tv_money_feedback"
+        android:textColor="@color/mainColor"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/tv_money_feedback2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_money_feedback"
+        android:textSize="@dimen/sp_8"
+        android:text="@string/tv_money_feedback1"
+        android:textColor="@color/mainColor"
+        android:layout_marginTop="@dimen/dp_2"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

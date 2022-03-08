@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.qipa.newboxproject">
+
+    <application
+        android:name=".app.App"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+<!--        <activity-->
+<!--            android:name="com.ysj.bt.qipa.CeshiLogActivity"-->
+<!--            android:exported="true" />-->
+
+        <activity
+            android:name=".ui.activity.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:exported="true" /> <!-- 设置环信应用的AppKey -->
+        <activity android:name=".ui.fragment.chat.groupinfo.GroupInfoActivity" /> <!-- 声明SDK所需的service SDK核心功能 -->
+        <activity android:name=".ui.fragment.chat.groupinfo.groupmember.GroupMemberActivity" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" /> <!-- 声明SDK所需的receiver -->
+        <activity
+            android:name=".ui.activity.WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity> <!-- <activity -->
+        <!-- android:name=".ui.TestActivity" -->
+        <!-- android:exported="true" /> -->
+<!--        <meta-data-->
+<!--            android:name="design_height_in_dp"-->
+<!--            android:value="640" />-->
+<!--        <meta-data-->
+<!--            android:name="design_width_in_dp"-->
+<!--            android:value="360" />-->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="138386#qipa-ceshi" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".data.push.CustomPushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+
+                <category android:name="com.qipa.newboxproject" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" /> <!-- 自定义消息推送接收器 -->
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".data.push.QipaPushService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
+    </application>
+
+    <queries>
+
+        <!-- com.blankj.utilcode SDK检测虚拟机 -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+
+        <!-- 微信支付SDK -->
+        <package android:name="com.tencent.mm" />
+        <!-- 支付宝支付SDK -->
+        <package android:name="com.eg.android.AlipayGphone" />
+    </queries>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-sdk tools:overrideLibrary="com.qipa.jetpackmvvm" />
+
+</manifest>

@@ -1,0 +1,27 @@
+package com.qipa.newboxproject.data.db.view
+
+import android.content.Context
+import android.widget.TextView
+import com.hyphenate.chat.EMTextMessageBody
+
+import com.hyphenate.easeui.widget.chatrow.EaseChatRow
+import com.qipa.newboxproject.R
+
+
+class ChatRowNotification(context: Context?, isSender: Boolean) :
+    EaseChatRow(context, isSender) {
+    private var contentView: TextView? = null
+    override fun onInflateView() {
+        inflater.inflate(R.layout.demo_row_notification, this)
+    }
+
+    override fun onFindViewById() {
+        contentView = findViewById(R.id.tv_chatcontent)
+    }
+
+    override fun onSetUpView() {
+        val txtBody = message.body as EMTextMessageBody
+        contentView?.setText(txtBody.message)
+    }
+}
+

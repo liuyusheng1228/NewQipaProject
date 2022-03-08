@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_recyclerview" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_24"
+            android:scaleType="center"
+            android:src="@mipmap/fab_up"
+            android:visibility="invisible"
+            app:elevation="@dimen/dp_5"
+            app:fabSize="mini"
+            app:layout_behavior="com.qipa.newboxproject.app.weight.recyclerview.FatScrollAwareFABBehavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

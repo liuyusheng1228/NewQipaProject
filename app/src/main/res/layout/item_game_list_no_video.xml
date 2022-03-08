@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/no_video_icon"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_64"
+        android:layout_marginStart="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/no_video_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_toRightOf="@+id/no_video_icon"
+        android:includeFontPadding="false"
+        android:text="太古封魔录"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_13"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/no_video_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/no_video_name"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_toRightOf="@+id/no_video_score"
+        android:text="仙侠 | MMORPG"
+        android:gravity="bottom"
+        android:textColor="#6B6B6B"
+        android:textSize="@dimen/sp_11" />
+    <TextView
+        android:id="@+id/no_video_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="daddsa"
+        android:textSize="@dimen/sp_11"
+        android:layout_below="@+id/no_video_name"
+        android:textColor="#6B6B6B"
+        android:gravity="bottom"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_toRightOf="@+id/no_video_icon"
+        android:layout_marginTop="@dimen/dp_4"
+        />
+    <TextView
+        android:id="@+id/no_video_server_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:05 新服"
+        android:textSize="@dimen/sp_11"
+        android:visibility="visible"
+        android:layout_below="@+id/no_video_name"
+        android:textColor="#4DB8BF"
+        android:gravity="bottom"
+        android:layout_toRightOf="@+id/no_video_types"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginLeft="@dimen/dp_9"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/no_video_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_16"
+        android:layout_below="@+id/no_video_types"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_toRightOf="@+id/no_video_icon"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+
+</RelativeLayout>

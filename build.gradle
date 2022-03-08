@@ -1,0 +1,49 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.5.30'
+    repositories {
+        jcenter() //{ url"http://jcenter.bintray.com" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/'}
+        maven { url 'https://maven.aliyun.com/repository/jcenter/'}
+        google()
+        mavenCentral()
+        maven { url 'https://www.jitpack.io' }
+        maven {url "http://mvn.mob.com/android"}
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        // 注册MobSDK
+        classpath "com.mob.sdk:MobSDK:+"
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.21'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+allprojects {
+    repositories {
+        jcenter() //{ url"http://jcenter.bintray.com" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/'}
+        maven { url 'https://maven.aliyun.com/repository/jcenter/'}
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://www.jitpack.io' }
+        maven {
+            //这里本地不再使用，改用下面的局域网的路径
+            //url 'file://D://AndroidStudioProjects//IMusic//maven',
+            //添加本地仓库URL
+            url 'http://localhost:8081/nexus/content/repositories/releases/'
+        }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dp_8"
+    android:paddingLeft="@dimen/dp_15"
+    android:paddingRight="@dimen/dp_15"
+    android:paddingTop="@dimen/dp_8"
+    >
+
+    <!--头像-->
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_header"
+        android:layout_width="@dimen/dp_32"
+        android:layout_height="@dimen/dp_32"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        app:riv_border_color="@color/gray_61"
+        app:riv_border_width="0.8dp"
+        app:riv_corner_radius="@dimen/dp_18" />
+    <!--用户名-->
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_toRightOf="@+id/iv_header"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="很么没喝"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_13"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_show_msg_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_user_name"
+        android:layout_alignRight="@+id/tv_user_name"
+        android:layout_below="@+id/tv_user_name"
+        android:textSize="@dimen/sp_11"
+        android:textColor="@color/gray_61"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="防守打法栋舒服舒服递四方速递"
+        />
+    <RelativeLayout
+        android:id="@+id/rel_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_user_name"
+        android:layout_alignRight="@+id/tv_user_name"
+        android:layout_below="@+id/tv_show_msg_comment"
+        >
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="刚刚"
+            android:textColor="@color/gray_61"
+            android:textSize="@dimen/sp_12"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+        <!--评论-->
+        <LinearLayout
+            android:id="@+id/ll_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/ll_like"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_3">
+
+            <ImageView
+                android:id="@+id/iv_comment"
+                android:layout_width="@dimen/dp_12"
+                android:layout_height="@dimen/dp_12"
+                android:src="@mipmap/message_icon" />
+
+            <TextView
+                android:id="@+id/tv_count_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text=""
+                android:textColor="@color/gray_61"
+                android:textSize="@dimen/sp_10"
+
+                />
+
+        </LinearLayout>
+        <!--点赞-->
+        <LinearLayout
+            android:id="@+id/ll_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginRight="@dimen/dp_15"
+            android:padding="@dimen/dp_3">
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="@dimen/dp_12"
+                android:layout_height="@dimen/dp_12"
+                android:src="@mipmap/icon_topic_post_item_like" />
+
+            <TextView
+                android:id="@+id/tv_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text=""
+                android:textColor="@color/gray_61"
+                android:textSize="@dimen/sp_10"
+
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0_5"
+        android:background="@color/colorDD"
+        android:layout_below="@+id/rel_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_15"
+        />
+
+</RelativeLayout>

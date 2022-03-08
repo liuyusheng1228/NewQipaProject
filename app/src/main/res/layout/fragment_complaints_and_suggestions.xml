@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
+    <data>
+        <variable
+            name="vm"
+            type="com.qipa.newboxproject.viewmodel.state.ComPlainsAndSuggestionModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/lin_status_views"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <com.cy.translucentparent.StatusBarView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"/>
+            <include layout="@layout/include_back"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_subimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11"
+            android:text="@string/ssdk_sms_btn_submit"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:background="@drawable/bg_button_green_round_2dp"
+            />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin_status_views"
+            android:layout_above="@+id/btn_subimit"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/complaints_suggestion_tips"
+                    android:textColor="@color/colorBlack666"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:textSize="@dimen/sp_11"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_10"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="@string/select_question_type"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recy_list_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:id="@+id/lin_input_ques"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_12"
+                        android:textColor="@color/black"
+                        android:text="@string/customer_service_nickname"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color66"
+                        android:textSize="@dimen/sp_11"
+                        android:textColorHint="@color/background"
+                        android:hint="请输入投诉客服昵称"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:background="@null"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="@string/problem_description"
+                    />
+                <com.qipa.newboxproject.app.weight.edit.YanCountEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
+                    app:etLineColor="#eff3f8"
+                    app:etMaxLength="500"
+                    app:etPromptTextColor="#aaaaaa"
+                    app:etPromptTextLeftColor="#2A96FF"
+                    app:etPromptTextSize="16dp"
+                    app:etTextColor="#333333"
+                    app:etTextSize="@dimen/sp_11"
+                    app:etType="percentage"
+                    app:etHint="请详细描述客服问题，我们好追踪问题"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="@string/upload_pic"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_images"
+                    android:paddingTop="@dimen/dp_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/lin_input_ques_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginBottom="@dimen/dp_15"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_12"
+                        android:textColor="@color/black"
+                        android:text="@string/customer_service_nickname_phone"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color66"
+                        android:textSize="@dimen/sp_11"
+                        android:textColorHint="@color/background"
+                        android:hint="请输入您的手机号码"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:background="@null"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+
+
+</layout>

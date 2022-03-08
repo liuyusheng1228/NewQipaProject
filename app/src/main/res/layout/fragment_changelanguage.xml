@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="click"
+            type="com.qipa.newboxproject.ui.fragment.me.set.ChangeLanguageFragment.ProClick" />
+        <variable
+            name="vm"
+            type="com.qipa.newboxproject.viewmodel.state.ChangeLanguageModel" />
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <com.cy.translucentparent.StatusBarView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"/>
+        <include layout="@layout/include_back"/>
+        <com.qipa.newboxproject.app.weight.SettingItemView
+            android:id="@+id/siv_chinese"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:onClick="@{() ->click.siv_chinese()}"
+            app:item_content="@string/lang_chs"
+            app:item_divider="true"
+            app:item_show_selected="true"
+            app:item_selected_image="@mipmap/seal_ic_selected"
+            >
+
+        </com.qipa.newboxproject.app.weight.SettingItemView>
+        <com.qipa.newboxproject.app.weight.SettingItemView
+            android:id="@+id/siv_twchinese"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:onClick="@{() ->click.siv_twchinese()}"
+            app:item_content="@string/lang_chs_tw"
+            app:item_show_selected="true"
+            app:item_selected_image="@mipmap/seal_ic_selected"
+            >
+
+        </com.qipa.newboxproject.app.weight.SettingItemView>
+        <com.qipa.newboxproject.app.weight.SettingItemView
+            android:id="@+id/siv_english"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:onClick="@{() ->click.siv_english()}"
+            app:item_content="@string/lang_english"
+            app:item_show_selected="true"
+            app:item_divider="true"
+            app:item_selected_image="@mipmap/seal_ic_selected"
+            >
+
+        </com.qipa.newboxproject.app.weight.SettingItemView>
+
+        <com.qipa.newboxproject.app.weight.SettingItemView
+            android:id="@+id/siv_arab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:onClick="@{() ->click.siv_arab()}"
+            app:item_content="@string/lang_arab"
+            app:item_show_selected="true"
+            app:item_selected_image="@mipmap/seal_ic_selected"
+            >
+
+        </com.qipa.newboxproject.app.weight.SettingItemView>
+
+    </LinearLayout>
+
+</layout>

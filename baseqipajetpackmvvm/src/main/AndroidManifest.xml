@@ -1,0 +1,86 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qipa.jetpackmvvm">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.INTERNET"/>
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission
+        android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.NFC"/>
+
+    <uses-feature android:name="android.hardware.nfc.hce"/>
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD"/>
+    <application>
+        <provider
+            android:authorities="${applicationId}.KtxInstaller"
+            android:name="com.qipa.jetpackmvvm.base.Ktx"
+            android:exported="false"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640" />
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360" />
+        <!-- 支付宝 -->
+        <!-- alipay sdk include component config -->
+
+        <!-- 微信 -->
+        <receiver
+            android:name=".pay.wxpay.AppRegister"
+            android:permission="com.tencent.mm.plugin.permission.SEND">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        <!-- 微信支付 -->
+        <activity
+            android:name=".pay.wxpay.WXPayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true"/>
+        <!-- configure it in your app AndroidManifest.xml -->
+        <activity-alias
+            android:name="${applicationId}.wxapi.WXPayEntryActivity"
+            android:targetActivity=".pay.wxpay.WXPayActivity"
+            android:exported="true"/>
+
+        <!-- 银联支付 -->
+        <activity
+            android:name=".pay.union.UnionPayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true"/>
+
+        <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false"/>
+
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.unionpay.UPPayWapActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+    </application>
+
+
+
+
+
+</manifest>
