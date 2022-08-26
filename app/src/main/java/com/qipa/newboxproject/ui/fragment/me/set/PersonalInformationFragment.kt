@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.cy.translucentparent.StatusNavigationUtils
 import com.giftedcat.picture.lib.photoview.GlideImageLoader
 import com.giftedcat.picture.lib.photoview.style.index.NumberIndexIndicator
 import com.giftedcat.picture.lib.photoview.style.progress.ProgressBarIndicator
@@ -74,7 +73,6 @@ class PersonalInformationFragment : BaseFragment<PersonalInformationModel,Fragme
         rel_detail_back.setOnClickListener {
             nav().navigateUp()
         }
-        StatusNavigationUtils.setStatusBarColor(mActivity,getResources().getColor(R.color.white_f9))
         initTransfer(null)
         showBottomDialog.setOnClickBottomListener(this)
         toolbar_titletv.text = resources.getString(R.string.personal_center)

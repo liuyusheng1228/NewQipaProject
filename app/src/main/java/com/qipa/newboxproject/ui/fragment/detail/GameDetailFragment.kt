@@ -38,6 +38,7 @@ import cn.sharesdk.framework.PlatformActionListener
 
 import cn.sharesdk.onekeyshare.ShareContentCustomizeCallback
 import com.blankj.utilcode.util.AppUtils
+import com.google.android.material.appbar.AppBarLayout
 import com.qipa.jetpackmvvm.ext.download.DownloadResultState
 import com.qipa.jetpackmvvm.ext.download.FileTool.getBasePath
 import com.qipa.jetpackmvvm.ext.nav
@@ -46,7 +47,11 @@ import com.qipa.jetpackmvvm.ext.util.logd
 import com.qipa.newboxproject.app.ext.showMessage
 import com.qipa.newboxproject.app.weight.textview.DownloadProgressButton
 import com.qipa.newboxproject.app.weight.textview.DownloadProgressButton.Companion.STATE_NORMAL
-
+import kotlinx.android.synthetic.main.detail_back.*
+import kotlinx.android.synthetic.main.include_game_detail_name.*
+import androidx.core.graphics.ColorUtils
+import com.qipa.newboxproject.app.App
+import kotlinx.android.synthetic.main.layout_uc_content.*
 
 class GameDetailFragment : BaseFragment<GameDetailModel,FragmentGameDetailBinding>() {
     override fun layoutId() = R.layout.fragment_game_detail
@@ -102,7 +107,7 @@ class GameDetailFragment : BaseFragment<GameDetailModel,FragmentGameDetailBindin
         detail_magic_indicator.navigator.notifyDataSetChanged()
         detail_view_pager.adapter?.notifyDataSetChanged()
         detail_view_pager.offscreenPageLimit = fragments.size
-        blurView.setBlurRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70f, getResources().getDisplayMetrics()))
+//        blurView.setBlurRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70f, getResources().getDisplayMetrics()))
         initDatas()
     }
 
@@ -114,7 +119,16 @@ class GameDetailFragment : BaseFragment<GameDetailModel,FragmentGameDetailBindin
             downloadProgressButton.state = STATE_NORMAL
             downloadProgressButton.setCurrentText(getString(R.string.download))
         }
-
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val ratio = Math.abs(verticalOffset) * 1.0f / appBarLayout.totalScrollRange
+            view_status_height.setBackgroundColor(ColorUtils.blendARGB(Color.TRANSPARENT, Color.WHITE, ratio))
+            view_toolbar_bg.setBackgroundColor(ColorUtils.blendARGB(Color.TRANSPARENT, Color.WHITE, ratio))
+            iv_toolbar_back.isSelected = ratio >= 0.5
+            iv_toolbar_nav.isSelected=ratio >= 0.5
+            iv_toolbar_search.isSelected = ratio >= 0.5
+            toolbar_title.visibility = if (ratio >= 0.5) View.VISIBLE else View.INVISIBLE
+//            setStatusBarDarkFont(ratio >= 0.5)
+        })
         mViewModel.downloadData.observe(viewLifecycleOwner, Observer {
             when(it){
                 is DownloadResultState.Pending ->{
@@ -198,6 +212,7 @@ class GameDetailFragment : BaseFragment<GameDetailModel,FragmentGameDetailBindin
     override fun onPause() {
         super.onPause()
         QPvd.releaseAllVideos()
+//        blurLayout.pauseBlur()
     }
 
     inner class ProxyClick{
@@ -212,7 +227,7 @@ class GameDetailFragment : BaseFragment<GameDetailModel,FragmentGameDetailBindin
 
         fun download(){
             if(downloadProgressButton.state == DownloadProgressButton.STATE_NORMAL|| downloadProgressButton.state == DownloadProgressButton.STATE_PAUSE){
-                mViewModel.downloadApk(getBasePath(),
+                mViewModel.downloadApk(getBasePath(App.getContext()),
                     "https://down.qq.com/qqweb/QQlite/Android_apk/qqlite_4.0.1.1060_537064364.apk",
                     "qq")
             }else if(downloadProgressButton.state == DownloadProgressButton.STATE_DOWNLOADING){
@@ -246,6 +261,8 @@ class GameDetailFragment : BaseFragment<GameDetailModel,FragmentGameDetailBindin
             AppUtils.installApp(downloadApkPath)
         }
     }
+
+
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

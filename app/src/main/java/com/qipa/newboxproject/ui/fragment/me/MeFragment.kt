@@ -1,5 +1,6 @@
 package com.qipa.newboxproject.ui.fragment.me
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.viewModels
@@ -21,6 +22,7 @@ import com.qipa.newboxproject.app.util.PlatformMananger
 import com.qipa.newboxproject.app.weight.dialog.ThirdLoginDialog
 import com.qipa.newboxproject.data.model.bean.ShareListItemInEntity
 import com.qipa.newboxproject.databinding.FragmentMeBinding
+import com.qipa.newboxproject.ui.activity.DownAppActivity
 import com.qipa.newboxproject.viewmodel.request.RequestMeViewModel
 import com.qipa.newboxproject.viewmodel.state.MeViewModel
 import kotlinx.android.synthetic.main.fragment_me.*
@@ -144,6 +146,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         /** 玩Android开源网站 */
         fun about() {
+//            nav().navigateAction(R.id.action_to_gameDetailbigFragment)
             nav().navigateAction(R.id.gameDetailFragment, Bundle().apply {
                 putParcelable(
                     "bannerdata",
@@ -157,7 +160,9 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         /** 加入我们 */
         fun join() {
-            nav().navigateAction(R.id.action_mainfragment_action_to_rechargeRebateFragment)
+
+            startActivity(Intent(mActivity,DownAppActivity::class.java))
+//            nav().navigateAction(R.id.action_mainfragment_action_to_rechargeRebateFragment)
 
 //            joinQQGroup("9n4i5sHt4189d4DvbotKiCHy-5jZtD4D")
         }

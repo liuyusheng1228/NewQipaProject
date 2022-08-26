@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kunminx.architecture.ui.callback.UnPeekLiveData
-import com.qipa.jetpackmvvm.base.appContext
 import com.qipa.jetpackmvvm.base.viewmodel.BaseViewModel
 import com.qipa.jetpackmvvm.callback.livedata.event.EventLiveData
+import com.qipa.newboxproject.app.App
 import com.qipa.newboxproject.app.util.AppTask
 import com.qipa.newboxproject.app.util.CacheUtil
 import com.qipa.newboxproject.app.util.LangUtils
@@ -35,10 +35,10 @@ class AppViewModel : BaseViewModel() {
         //默认值保存的账户信息，没有登陆过则为null
         userInfo.value = CacheUtil.getUser()
         //默认值颜色
-        appColor.value = SettingUtil.getColor(appContext)
+        appColor.value = SettingUtil.getColor(App.getContext())
         //初始化列表动画
         appAnimation.value = SettingUtil.getListMode()
-        appTask = AppTask(appContext)
+        appTask = AppTask(App.getContext())
         // 语言
         languageLocal?.value = appTask?.getLanguageLocal()
     }
@@ -57,7 +57,7 @@ class AppViewModel : BaseViewModel() {
      * @return
      */
     fun updateLanguageLocal() : Context {
-       return AppTask.updateResources(appContext,languageLocal.toString())
+       return AppTask.updateResources(App.getContext(),languageLocal.toString())
     }
 
     /**

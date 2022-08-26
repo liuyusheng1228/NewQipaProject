@@ -2,7 +2,7 @@ package com.qipa.newboxproject.ui.fragment.message
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cy.translucentparent.StatusNavigationUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.qipa.jetpackmvvm.ext.nav
 import com.qipa.jetpackmvvm.ext.navigateAction
 import com.qipa.newboxproject.R
@@ -21,7 +21,9 @@ class MissionHallFragment : BaseFragment<MissionHallModel,FragmentMissionHallBin
     private var mDataDailyTask : ArrayList<DailyTaskBean> = arrayListOf()
 
     override fun initView(savedInstanceState: Bundle?) {
-        StatusNavigationUtils.setStatusBarColor(mActivity,getResources().getColor(R.color.white))
+        ImmersionBar.with(this)
+            .statusBarColor(R.color.white)
+            .init()
         mDatabind.vm = mViewModel
         rel_detail_back.setOnClickListener {
             nav().navigateUp()
@@ -29,7 +31,9 @@ class MissionHallFragment : BaseFragment<MissionHallModel,FragmentMissionHallBin
         toolbar_titletv.text = getString(R.string.mission_hall)
         mDatabind.click = ProxyClick()
         rel_detail_back.setOnClickListener {
-            StatusNavigationUtils.setStatusBarColor(mActivity,getResources().getColor(R.color.tranaction))
+            ImmersionBar.with(this)
+                .statusBarColor(R.color.tranaction)
+                .init()
             nav().navigateUp()
         }
         recycler_day_lsit.init(LinearLayoutManager(mActivity),dailyTaskListAdapter)
@@ -52,7 +56,9 @@ class MissionHallFragment : BaseFragment<MissionHallModel,FragmentMissionHallBin
     }
 
     override fun onBackPressed(): Boolean {
-        StatusNavigationUtils.setStatusBarColor(mActivity,getResources().getColor(R.color.tranaction))
+        ImmersionBar.with(this)
+            .statusBarColor(R.color.tranaction)
+            .init()
         return true
     }
 

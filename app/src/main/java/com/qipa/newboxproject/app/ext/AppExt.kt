@@ -15,7 +15,6 @@ import com.qipa.newboxproject.R
 import com.qipa.newboxproject.app.util.CacheUtil
 import com.qipa.newboxproject.app.util.SettingUtil
 import com.qipa.jetpackmvvm.ext.navigateAction
-import com.qipa.newboxproject.app.appViewModel
 import com.qipa.newboxproject.app.network.NetworkApi
 import com.qipa.newboxproject.app.util.Constants
 import com.qipa.newboxproject.app.weight.dialog.CommonDialog

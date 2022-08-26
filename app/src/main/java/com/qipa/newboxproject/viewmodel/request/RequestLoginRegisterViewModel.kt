@@ -18,6 +18,7 @@ import com.qipa.newboxproject.data.model.WxUserInfoResponse
 import com.qipa.newboxproject.data.model.bean.RealUserNameBean
 import com.qipa.qipaimbase.utils.ToastUtils
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -128,7 +129,7 @@ class RequestLoginRegisterViewModel : BaseViewModel() {
 
     fun reUpLoadFile(pic : String) {
         file = File(pic)
-        val requestBody: RequestBody = RequestBody.create(MediaType.parse("image/png"), file)
+        val requestBody: RequestBody = RequestBody.create("image/png".toMediaTypeOrNull(), file!!)
         val mulbody: MultipartBody.Part =
             MultipartBody.Part.createFormData("file", file?.name, requestBody) //获取上传文件的请求体
         request({HttpRequestCoroutine.upload(mulbody)
@@ -138,6 +139,7 @@ class RequestLoginRegisterViewModel : BaseViewModel() {
         })
 
     }
+
 
 
     fun updateUserInfo(userInfoUploadBean: UserInfoUploadBean) {

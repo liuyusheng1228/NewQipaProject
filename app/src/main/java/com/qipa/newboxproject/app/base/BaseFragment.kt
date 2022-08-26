@@ -2,8 +2,10 @@ package com.qipa.newboxproject.app.base
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
+import com.gyf.immersionbar.ktx.immersionBar
 import com.qipa.jetpackmvvm.base.fragment.BaseVmDbFragment
 import com.qipa.jetpackmvvm.base.viewmodel.BaseViewModel
+import com.qipa.newboxproject.R
 import com.qipa.newboxproject.app.ext.dismissLoadingExt
 import com.qipa.newboxproject.app.ext.hideSoftKeyboard
 import com.qipa.newboxproject.app.ext.showLoadingExt
@@ -52,6 +54,14 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      */
     override fun dismissLoading() {
         dismissLoadingExt()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        immersionBar {
+            statusBarColor(R.color.colorPrimary)
+            navigationBarColor(R.color.colorPrimary)
+        }
     }
 
     override fun onPause() {

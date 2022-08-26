@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/middle_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:tag="middle"
+    android:layout_marginTop="@dimen/dp_250"
+    app:layout_collapseMode="parallax"
+    app:layout_collapseParallaxMultiplier="0.5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/gm_up_um_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65"
+                android:src="@mipmap/bg_task_center_header"
+                android:scaleType="fitXY"
+                android:tag="overScroll" />
+            <com.github.mmin18.widget.RealtimeBlurView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65"
+                app:realtimeBlurRadius="6dp"
+                app:realtimeOverlayColor="#00000000"
+                android:layout_alignParentBottom="true"
+                >
+            </com.github.mmin18.widget.RealtimeBlurView>
+
+            <include
+                android:id="@+id/include_game_detail_name"
+                layout="@layout/include_game_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:minHeight="0dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:id="@+id/frag_uc_nickname_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Lover's Day"
+                android:textColor="@color/colorBlack333"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dp_37"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/frag_uc_msg_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="chat"
+                    android:textColor="@color/colorBlack333" />
+
+                <TextView
+                    android:id="@+id/frag_uc_follow_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center"
+                    android:text="follow"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/frag_uc_interest_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="2dp"
+                android:maxLines="2"
+                android:paddingLeft="15dp"
+                android:text="music、dance、drive、fly~O(∩_∩)O~"
+                android:textColor="#aa333333"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/layout_func_in_ucs" />
+
+    </LinearLayout>
+</LinearLayout>

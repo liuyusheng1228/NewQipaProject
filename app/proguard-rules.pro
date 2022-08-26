@@ -153,3 +153,33 @@
 -dontwarn cn.jiguang.**
 -keep class cn.jiguang.** { *; }
 -keep class * extends cn.jpush.android.service.JPushMessageReceiver{*;}
+
+-keep class com.qipa.newboxproject.**{*;}
+-keep class top.niunaijun.blackbox.** {*; }
+-keep class top.niunaijun.jnihook.** {*; }
+-keep class mirror.** {*; }
+-keep class android.** {*; }
+-keep class com.android.** {*; }
+-keep class black.** {*; }
+-keep class top.** {*; }
+-keep class de.** {*; }
+-keep class xposed.** {*; }
+-keep class com.qipa.qipaimbase.** {*; }
+
+
+# -------------------lottie-------------------------
+-keep class com.airbnb.lottie.** { *; }
+
+
+# -------------------aria-------------------------
+-dontwarn com.arialyy.aria.**
+-keep class com.arialyy.aria.**{*;}
+-keep class **$$DownloadListenerProxy{ *; }
+-keep class **$$UploadListenerProxy{ *; }
+-keep class **$$DownloadGroupListenerProxy{ *; }
+-keep class **$$DGSubListenerProxy{ *; }
+-keepclasseswithmembernames class * {
+    @Download.* <methods>;
+    @Upload.* <methods>;
+    @DownloadGroup.* <methods>;
+}

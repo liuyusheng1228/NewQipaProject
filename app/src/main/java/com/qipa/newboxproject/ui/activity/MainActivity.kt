@@ -6,8 +6,11 @@ import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import cn.qpvd.QPvd
 import com.blankj.utilcode.util.ToastUtils
@@ -18,15 +21,14 @@ import com.qipa.newboxproject.app.base.BaseActivity
 import com.qipa.newboxproject.app.upload.bean.CheckVersionResult
 import com.qipa.newboxproject.app.weight.dialog.UpdateDialog
 import com.qipa.newboxproject.databinding.ActivityMainBinding
-import com.qipa.newboxproject.viewmodel.state.MainViewModel
 import com.qipa.newboxproject.viewmodel.state.LoginFragmentViewModel
-
-import androidx.lifecycle.ViewModelProvider
-import java.lang.Exception
+import com.qipa.newboxproject.viewmodel.state.MainViewModel
 import java.security.MessageDigest
 
 
-class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
+class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>()  {
+
+    private val mTheme = 0
     private var mDialog: UpdateDialog? = null
     var exitTime = 0L
     private var checkVersionResult: CheckVersionResult? = null
@@ -58,8 +60,16 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 //            supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
 //            StatusBarUtil.setTranslucentDiff(this)
         }
+        val temp = ImageView(this)
+
+//        org.alee.component.skin.page.WindowManager.getInstance().getWindowProxy(this)
+//            .addEnabledThemeSkinView(temp, SkinElement("src", R.mipmap.ic_launcher))
         mDialog = UpdateDialog(this,null)
+//        ThemeSkinService.getInstance().subscribeSwitchThemeSkin(this)
+      
         getFaceBookKey()
+//        onThemeSkinSwitch()
+//        ThemeSkinService.getInstance().switchThemeSkin(mTheme)
 //        mDialog?.show()
 //        StatusBarUtil.setColor(this, it, 0)
     }

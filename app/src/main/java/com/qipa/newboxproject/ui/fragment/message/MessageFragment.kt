@@ -11,8 +11,8 @@ import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.cy.translucentparent.StatusNavigationUtils
 import com.google.gson.Gson
+import com.gyf.immersionbar.ImmersionBar
 import com.hyphenate.chat.EMGroup
 import com.hyphenate.easeui.model.EaseEvent
 import com.kingja.loadsir.core.LoadService
@@ -179,7 +179,9 @@ class MessageFragment : BaseFragment<MessageModel, FragmentMessageBinding>() {
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         Log.i("Apiii","显示")
-        StatusNavigationUtils.setNavigationBarTransparent(mActivity)
+        ImmersionBar.with(this)
+            .statusBarColor(R.color.transparent)
+            .init()
     }
 
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    >
 
     <data>
         <variable
@@ -9,17 +11,25 @@
             name="click"
             type="com.qipa.newboxproject.ui.fragment.detail.DetailsFragment.ProxyClick" />
     </data>
+    <com.qipa.jetpackmvvm.widget.MeroNestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-        <com.qipa.newboxproject.app.weight.recyclerview.HorizontalRecyclerView
-            android:id="@+id/list_pic_vedios"
+        <com.qipa.jetpackmvvm.widget.NestedScrollableHost
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content">
+            <com.qipa.jetpackmvvm.widget.MeroHorizontalRecyclerView
+                android:id="@+id/list_pic_vedios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.qipa.jetpackmvvm.widget.NestedScrollableHost>
 
-            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,5 +53,5 @@
 
     </LinearLayout>
 
-
+    </com.qipa.jetpackmvvm.widget.MeroNestedScrollView>
 </layout>

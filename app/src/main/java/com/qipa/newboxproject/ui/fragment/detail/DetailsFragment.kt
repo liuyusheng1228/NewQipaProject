@@ -43,6 +43,7 @@ class DetailsFragment : BaseFragment<DetailModel,FragmentDetailsBinding>() {
         list_pic_vedios.init(linearLayoutManager,detailPicVedioAdapter).let {
             it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f), false))
         }
+        list_pic_vedios.isNestedScrollingEnabled = false
         loadData()
     }
 

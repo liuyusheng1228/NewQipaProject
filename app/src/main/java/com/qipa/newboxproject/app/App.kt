@@ -1,16 +1,18 @@
 package com.qipa.newboxproject.app
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
 import cat.ereza.customactivityoncrash.activity.DefaultErrorActivity
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import com.mob.MobSDK
-import com.qipa.newboxproject.BuildConfig
 import com.tencent.mmkv.MMKV
 import com.qipa.newboxproject.app.event.AppViewModel
 import com.qipa.newboxproject.app.event.EventViewModel
@@ -32,9 +34,11 @@ import com.github.gzuliyujiang.dialog.DialogConfig
 import com.github.gzuliyujiang.dialog.DialogStyle
 
 import com.github.gzuliyujiang.dialog.DialogLog
+import com.google.auto.service.AutoService
 import com.qipa.newboxproject.app.util.LangUtils
 import com.qipa.newboxproject.app.util.PreferenceManager
 import com.qipa.newboxproject.ui.fragment.chat.groupinfo.GroupInfoActivity
+import com.qipa.qipaimbase.BuildConfig
 import com.qipa.qipaimbase.ImBaseBridge
 import com.qipa.qipaimbase.chat.ChatData
 import com.qipa.qipaimbase.utils.ToastUtils
@@ -45,6 +49,24 @@ import com.qipa.qipaimbase.utils.http.jsons.JsonResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import skin.support.app.SkinCardViewInflater
+
+import skin.support.constraint.app.SkinConstraintViewInflater
+
+import skin.support.design.app.SkinMaterialViewInflater
+
+import skin.support.app.SkinAppCompatViewInflater
+
+import skin.support.SkinCompatManager
+import com.gyf.immersionbar.OnBarListener
+
+import com.gyf.immersionbar.OnKeyboardListener
+
+import com.gyf.immersionbar.BarHide
+
+import com.gyf.immersionbar.ImmersionBar
+import com.qipa.jetpackmvvm.base.ApplicationLifecycle
+import com.qipa.newboxproject.R
 
 
 /**
@@ -65,76 +87,19 @@ class App : BaseApp() {
         lateinit var appViewModelInstance: AppViewModel
         private const val APP_ID = "280f8ef2cec41cde3bed705236ab9bc4"
 
-    }
+        @SuppressLint("StaticFieldLeak")
+        @Volatile
+        private lateinit var mContext: Context
 
-    override fun onCreate() {
-        super.onCreate()
-        MMKV.initialize(this.filesDir.absolutePath + "/mmkv")
-        instance = this
-        initAutoSize()
-
-        MultiDex.install(this)
-        MobSDK.init(this)
-        //界面加载管理 初始化
-        LoadSir.beginBuilder()
-            .addCallback(LoadingCallback())//加载
-            .addCallback(ErrorCallback())//错误
-            .addCallback(EmptyCallback())//空
-            .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
-            .commit()
-        //初始化Bugly
-        val context = applicationContext
-        // 获取当前包名
-        val packageName = context.packageName
-        // 获取当前进程名
-        val processName = getProcessName(android.os.Process.myPid())
-        // 设置是否为上报进程
-//        val strategy = CrashReport.UserStrategy(context)
-//        strategy.isUploadProcess = processName == null || processName == packageName
-        // 初始化Bugly
-//        Bugly.init(context, if (BuildConfig.DEBUG) "xxx" else "a52f2b5ebb", BuildConfig.DEBUG)
-//        "".logd()
-        jetpackMvvmLog = BuildConfig.DEBUG
-
-        GlobalScope.launch(Dispatchers.Main) {
-            initHx()
-            initPush()
-            initWeheel()
+        fun getContext() : Context{
+            return mContext
         }
-        eventViewModelInstance = getAppViewModelProvider().get(EventViewModel::class.java)
-        appViewModelInstance = getAppViewModelProvider().get(AppViewModel::class.java)
-
-        //防止项目崩溃，崩溃后打开错误界面
-        CaocConfig.Builder.create()
-            .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //default: CaocConfig.BACKGROUND_MODE_SHOW_CUSTOM
-            .enabled(true)//是否启用CustomActivityOnCrash崩溃拦截机制 必须启用！不然集成这个库干啥？？？
-            .showErrorDetails(false) //是否必须显示包含错误详细信息的按钮 default: true
-            .showRestartButton(false) //是否必须显示“重新启动应用程序”按钮或“关闭应用程序”按钮default: true
-            .logErrorOnRestart(false) //是否必须重新堆栈堆栈跟踪 default: true
-            .trackActivities(true) //是否必须跟踪用户访问的活动及其生命周期调用 default: false
-            .minTimeBetweenCrashesMs(2000) //应用程序崩溃之间必须经过的时间 default: 3000
-            .restartActivity(WelcomeActivity::class.java) // 重启的activity
-            .errorActivity(ErrorActivity::class.java) //发生错误跳转的activity
-            .apply()
 
 
-        val builder: ImBaseBridge.Builder = ImBaseBridge.Builder()
-            .application(this)
-            .appId(APP_ID)
-            .addListener(getListener())
-
-        ImBaseBridge.instance?.init(builder)
     }
 
-    override fun attachBaseContext(base: Context?) {
-        val context = LangUtils.getConfigurationContext(base!!)
-        super.attachBaseContext(context)
-    }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
 
-    }
 
 
 
@@ -236,12 +201,12 @@ class App : BaseApp() {
 
     private fun initHx() {
         // 初始化PreferenceManager
-        PreferenceManager.init(this)
+        PreferenceManager.init(mContext)
         // init hx sdk
         Log.i("DemoApplication", "application initHx"+ChatHelper.instance?.autoLogin!!)
         if (ChatHelper.instance?.autoLogin!!) {
             Log.i("DemoApplication", "application initHx")
-            ChatHelper.instance?.init(this)
+            ChatHelper.instance?.init(mContext)
         }
     }
 
@@ -269,7 +234,7 @@ class App : BaseApp() {
     }
 
     fun initAutoSize(){
-        AutoSize.initCompatMultiProcess(this);
+        AutoSize.initCompatMultiProcess(mContext)
         /**
          * 以下是 AndroidAutoSize 可以自定义的参数, {@link AutoSizeConfig} 的每个方法的注释都写的很详细
          * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
@@ -319,6 +284,88 @@ class App : BaseApp() {
             //即使在不改三方库源码的情况下也可以完美适配三方库的页面, 这就是 AndroidAutoSize 的优势
             //但前提是三方库页面的布局使用的是 dp 和 sp, 如果布局全部使用的 px, 那 AndroidAutoSize 也将无能为力
             //经过测试 DefaultErrorActivity 的设计图宽度在 380dp - 400dp 显示效果都是比较舒服的
+    }
+
+    override fun attachBaseContext(context: Context) {
+        instance = this
+        mContext = context!!
+        AppManager.doAttachBaseContext(context)
+        val context = LangUtils.getConfigurationContext(context!!)
+        super.attachBaseContext(context)
+    }
+
+
+
+    override fun onCreate() {
+        super.onCreate()
+        AppManager.doOnCreate(mContext)
+        MMKV.initialize(mContext.filesDir.absolutePath + "/mmkv")
+        instance = this
+        initAutoSize()
+        MultiDex.install(mContext)
+        MobSDK.init(mContext)
+
+        SkinCompatManager.withoutActivity(application)
+
+            .addInflater(SkinAppCompatViewInflater()) // 基础控件换肤初始化
+            .addInflater(SkinMaterialViewInflater()) // material design 控件换肤初始化[可选]
+            .addInflater(SkinConstraintViewInflater()) // ConstraintLayout 控件换肤初始化[可选]
+            .addInflater(SkinCardViewInflater()) // CardView v7 控件换肤初始化[可选]
+            .setSkinStatusBarColorEnable(false) // 关闭状态栏换肤，默认打开[可选]
+            .setSkinWindowBackgroundEnable(false) // 关闭windowBackground换肤，默认打开[可选]
+            .loadSkin()
+
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        //界面加载管理 初始化
+        LoadSir.beginBuilder()
+            .addCallback(LoadingCallback())//加载
+            .addCallback(ErrorCallback())//错误
+            .addCallback(EmptyCallback())//空
+            .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
+            .commit()
+        //初始化Bugly
+        val context = mContext
+        // 获取当前包名
+        val packageName = context.packageName
+        // 获取当前进程名
+        val processName = getProcessName(android.os.Process.myPid())
+        // 设置是否为上报进程
+//        val strategy = CrashReport.UserStrategy(context)
+//        strategy.isUploadProcess = processName == null || processName == packageName
+        // 初始化Bugly
+//        Bugly.init(context, if (BuildConfig.DEBUG) "xxx" else "a52f2b5ebb", BuildConfig.DEBUG)
+//        "".logd()
+//        jetpackMvvmLog = BuildConfig.DEBUG
+
+        GlobalScope.launch(Dispatchers.Main) {
+            initHx()
+            initPush()
+            initWeheel()
+        }
+
+        eventViewModelInstance = BaseApp.application.getAppViewModelProvider().get(EventViewModel::class.java)
+        appViewModelInstance = AppViewModel()
+
+        //防止项目崩溃，崩溃后打开错误界面
+        CaocConfig.Builder.create()
+            .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //default: CaocConfig.BACKGROUND_MODE_SHOW_CUSTOM
+            .enabled(true)//是否启用CustomActivityOnCrash崩溃拦截机制 必须启用！不然集成这个库干啥？？？
+            .showErrorDetails(false) //是否必须显示包含错误详细信息的按钮 default: true
+            .showRestartButton(false) //是否必须显示“重新启动应用程序”按钮或“关闭应用程序”按钮default: true
+            .logErrorOnRestart(false) //是否必须重新堆栈堆栈跟踪 default: true
+            .trackActivities(true) //是否必须跟踪用户访问的活动及其生命周期调用 default: false
+            .minTimeBetweenCrashesMs(2000) //应用程序崩溃之间必须经过的时间 default: 3000
+            .restartActivity(WelcomeActivity::class.java) // 重启的activity
+            .errorActivity(ErrorActivity::class.java) //发生错误跳转的activity
+            .apply()
+
+
+        val builder: ImBaseBridge.Builder = ImBaseBridge.Builder()
+            .application(application)
+            .appId(APP_ID)
+            .addListener(getListener())
+
+        ImBaseBridge.instance?.init(builder)
     }
 
 

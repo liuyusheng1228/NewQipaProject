@@ -24,7 +24,7 @@ class DownloadModel : BaseViewModel() {
     fun downloadApk(path: String, url: String, tag: String) {
         viewModelScope.launch {
             //直接强制下载，不管文件是否存在 ，如果需要每次都重新下载可以设置为true
-            DownLoadManager.downLoad(tag, url, path, "tmd.apk", false, downLoadExt(downloadData))
+//            DownLoadManager.downLoad(tag, url, path, "tmd.apk", false, downLoadExt(downloadData))
         }
     }
 

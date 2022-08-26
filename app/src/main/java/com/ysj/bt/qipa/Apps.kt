@@ -10,7 +10,6 @@ import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import com.mob.MobSDK
-import com.qipa.newboxproject.BuildConfig
 import com.tencent.mmkv.MMKV
 import com.qipa.newboxproject.app.event.AppViewModel
 import com.qipa.newboxproject.app.event.EventViewModel
@@ -63,10 +62,10 @@ class Apps : BaseApp() {
         Log.i("Api","sddsfsdf2")
     }
 
-    override fun attachBaseContext(base: Context?) {
-        val context = LangUtils.getConfigurationContext(base!!)
-        super.attachBaseContext(context)
-    }
+//    override fun attachBaseContext(base: Context?) {
+//        val context = LangUtils.getConfigurationContext(base!!)
+//        super.attachBaseContext(context)
+//    }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)

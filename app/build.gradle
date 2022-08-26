@@ -2,10 +2,14 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-    id 'kotlin-kapt'
     id 'AndResGuard'
+    id 'com.alibaba.arouter'
 }
+apply plugin: 'kotlin-kapt'
 apply from: '../MobSDK.gradle'
+
+
+
 android {
     compileSdk 31
     signingConfigs {
@@ -40,12 +44,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
-
-        ndk {
-            //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
-            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
-        }
+        flavorDimensions "BlackBox64"
+//        ndk {
+//            //选择要添加的对应 cpu 类型的 .so 库。
+//            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+//            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+//        }
 
         manifestPlaceholders = [
                 JPUSH_PKGNAME : applicationId,
@@ -54,20 +58,64 @@ android {
         ]
     }
 
+    productFlavors {
+        BlackBox32 {
+            applicationId "com.qipa.newboxproject"
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+            resValue "string", "app_name", "BlackBox32"
+            manifestPlaceholders = [APP_ICON      : "@mipmap/ic_launcher",
+                                    APP_ROUND_ICON: "@mipmap/ic_launcher_round"]
+        }
+
+        BlackBox64 {
+            applicationId "com.qipa.newboxproject64"
+            ndk {
+                abiFilters "arm64-v8a"
+            }
+            resValue "string", "app_name", "BlackBox64"
+            manifestPlaceholders = [APP_ICON      : "@mipmap/ic_launcher",
+                                    APP_ROUND_ICON: "@mipmap/ic_launcher_round"]
+        }
+
+        BlackBox32Beta {
+            applicationId "top.niunaijun.blackboxa32_beta"
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+            resValue "string", "app_name", "BlackBox32 Beta"
+            manifestPlaceholders = [APP_ICON      : "@mipmap/ic_launcher_beta",
+                                    APP_ROUND_ICON: "@mipmap/ic_launcher_round_beta"]
+        }
+
+        BlackBox64Beta {
+            applicationId "top.niunaijun.blackboxa64_beta"
+            ndk {
+                abiFilters "arm64-v8a"
+            }
+            resValue "string", "app_name", "BlackBox64 Beta"
+            manifestPlaceholders = [APP_ICON      : "@mipmap/ic_launcher_round_beta",
+                                    APP_ROUND_ICON: "@mipmap/ic_launcher_round_beta"]
+        }
+    }
+
     //使用Kotlin实验特性
     androidExtensions {
         experimental = true
     }
     buildTypes {
         debug {
+
+            jniDebuggable true
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-common.pro', 'proguard-module.pro', 'proguard-third-party.pro'
             shrinkResources false
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-common.pro', 'proguard-module.pro', 'proguard-third-party.pro'
             shrinkResources true
             zipAlignEnabled true
             pseudoLocalesEnabled true
@@ -81,19 +129,23 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding true
         dataBinding = true
     }
 
     lintOptions {
+        checkReleaseBuilds false
         disable 'InvalidPackage'
         disable "ResourceType"
         abortOnError false
+        ignoreWarnings true
     }
     dexOptions {
         javaMaxHeapSize "4g"
         jumboMode = true
+        maxProcessCount 8
         preDexLibraries = false
         additionalParameters = [
                 '--multi-dex',//多分包
@@ -105,113 +157,55 @@ android {
 //            dirs 'libs'
 //        }
 //    }
-
+    // 自定义打包apk的文件名
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (outputFileName != null && outputFileName.endsWith('.apk')) {
+                outputFileName = "${BuildConfig.applicationId}" +
+                        "_${BuildConfig.versionCode}" +
+                        "(${BuildConfig.versionName})" +
+                        "_${variant.buildType.name}" +
+                        ".apk"
+            }
+        }
+    }
 
 }
 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+//configurations.all {
+//    resolutionStrategy {
+//        force 'androidx.core:core-ktx:1.3.2'
+//    }
+//}
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
 //    implementation project(":qipanetwork")
-    implementation 'com.github.AsynctaskCoffee:VideoLayout:1.3'//视频背景控件
-//    implementation project(':baseqipajetpackmvvm')
-    implementation 'com.qipa.jetpackmvvm:baseqipajetpackmvvm:1.0.0'
-    //轮播图
-    implementation 'com.github.zhpanvip:BannerViewPager:3.1.5'
+    implementation project(':Bcore')
 
-    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation project(':baseqipajetpackmvvm')
+//    implementation 'com.qipa.jetpackmvvm:baseqipajetpackmvvm:1.0.0'
 
-
-    implementation 'io.github.anylifezlb:downloadInstaller:2.0.0'//app
-    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
-//    api 'com.github.AnJiaoDe:TabLayoutNiubility:V1.2.8'
-    api 'androidx.viewpager2:viewpager2:1.0.0'//版本必须>=1.0.0
-    //RevealLayout
-    implementation 'com.github.goweii:RevealLayout:1.1.1'
-    //微信开源项目，替代SP
-    implementation 'com.tencent:mmkv:1.0.22'
-
-    //第三方recyclerview
-    implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
-    //管理界面状态库
-    implementation 'com.kingja.loadsir:loadsir:1.3.8'
-    //指示器库
-    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
-    //防崩溃
-    implementation 'cat.ereza:customactivityoncrash:2.3.0'
-
-    implementation 'com.android.support:multidex:1.0.3'
-
-
-    //底部bottomBar
-    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
-
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
-
-    //androidx UI
-
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation 'androidx.preference:preference-ktx:1.1.1'
-
-    //dialog
-    implementation "com.afollestad.material-dialogs:lifecycle:3.3.0"
-    implementation "com.afollestad.material-dialogs:core:3.3.0"
-    implementation "com.afollestad.material-dialogs:color:3.3.0"
-    implementation "com.afollestad.material-dialogs:datetime:3.3.0"
-    implementation "com.afollestad.material-dialogs:bottomsheets:3.3.0"
-
-    //下载
-    implementation("com.liulishuo.filedownloader:library:1.7.7") {
-        exclude group: "com.android.support"
-    }
-    implementation 'com.louiscad.splitties:splitties-collections:2.1.1'
-
-    //官方的
-    implementation 'com.google.android:flexbox:2.0.1'
-    //吸顶效果
-    implementation 'com.github.donkingliang:GroupedRecyclerViewAdapter:2.3.0'
-    //视频播放
-//    implementation 'cn.jzvd:jiaozivideoplayer:7.7.0'
-    //摩斯效果 毛玻璃效果
-//    implementation 'jp.wasabeef:glide-transformations:4.3.0'
-//    // If you want to use the GPU Filters
-//    implementation 'jp.co.cyberagent.android:gpuimage:2.1.0'
-
-    implementation 'com.github.mmin18:realtimeblurview:1.2.1'
-
-    //气泡弹窗
-    implementation 'me.kareluo.ui:popmenu:1.1.0'
-    implementation 'com.zhy:base-rvadapter:3.0.3'
-    implementation 'com.github.Giftedcat:DynamicPublishing:1.0.0'
-
-    //圆角圆形图片控件 主要是可以带边框
-    implementation 'com.makeramen:roundedimageview:2.3.0'
-
-    //推送核心库
-    implementation 'cn.jiguang.sdk:jpush:4.5.0'  // 此处以JPush 4.5.0 版本为例。
-    implementation 'cn.jiguang.sdk:jcore:3.1.2'  // 此处以JCore 3.1.2 版本为例。
-
-    //日期选择
-    implementation 'com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.6'
-    //im聊天功能
-    implementation 'io.hyphenate:ease-im-kit:3.8.5'
-    // EaseIMKit依赖，必须添加环信IM SDK
-    ////implementation project(path: ':hyphenatechatsdk')
-    implementation 'io.hyphenate:hyphenate-chat:3.8.5'
-
-    //EaseCallKit依赖，必须添加环信IM SDK
-    //api project(':ease-call-kit')
-//    implementation 'io.hyphenate:ease-call-kit:3.8.5'
-    // room
-    implementation "androidx.room:room-runtime:2.2.5"
-    annotationProcessor "androidx.room:room-compiler:2.2.5"
-    // parse
-    implementation 'com.parse:parse-android:1.13.1'
     implementation project(":qipaImBase")
     implementation project(':qipavideoplayer')
+//    api project(path: ':Lib_Skin:PaintedSkin')
+//    annotationProcessor project(path: ':Lib_Skin:Plugin:AopPlugin')
+//    api project(path: ':Lib_Skin:Plugin:AopPlugin')
+//    api project(path: ':Lib_Skin:ConstraintLayoutCompat')
+
+
+//    implementation project(':blurkit')
 }
 
 andResGuard {
@@ -270,6 +264,7 @@ andResGuard {
             "*.jpg",
             "*.jpeg",
             "*.gif",
+            "*.json",
     ]
     sevenzip {
         artifact = 'com.tencent.mm:SevenZip:1.2.21'

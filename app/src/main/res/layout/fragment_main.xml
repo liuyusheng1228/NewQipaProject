@@ -20,12 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_45"
             android:background="@color/white"
-            android:theme="@style/myNavigationDrawerStyle"
-            app:menu="@menu/menu_navigation"
             app:itemIconTint="@color/bottom_selector"
             app:itemTextColor="@color/bottom_selector"
+            app:itemTextAppearanceActive="@style/bottom_tab_title_active"
+            app:itemTextAppearanceInactive="@style/bottom_tab_title_inactive"
             app:labelVisibilityMode="labeled"
-            app:itemIconSize="@dimen/dp_20"
+            app:itemIconSize="@dimen/dp_25"
             />
     </LinearLayout>
 </layout>

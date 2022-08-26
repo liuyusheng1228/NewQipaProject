@@ -11,8 +11,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.zhpan.bannerview.BaseViewHolder
-import com.qipa.jetpackmvvm.base.appContext
 import com.qipa.newboxproject.R
+import com.qipa.newboxproject.app.App
 import com.qipa.newboxproject.data.model.bean.BannerResponse
 
 class MemberBannerViewHolder(view: View) : BaseViewHolder<BannerResponse>(view) {
@@ -22,7 +22,7 @@ class MemberBannerViewHolder(view: View) : BaseViewHolder<BannerResponse>(view) 
         val img = itemView.findViewById<ImageView>(R.id.bannerhome_img)
 
         data?.let {
-            Glide.with(appContext)
+            Glide.with(App.getContext())
                 .load(it.imagePath)
                 .apply(options)
                 .transition(DrawableTransitionOptions.withCrossFade(500))

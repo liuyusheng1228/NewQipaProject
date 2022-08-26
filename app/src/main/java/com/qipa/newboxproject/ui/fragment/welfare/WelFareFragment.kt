@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
-import com.cy.translucentparent.StatusNavigationUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.qipa.jetpackmvvm.ext.nav
 import com.qipa.jetpackmvvm.ext.navigateAction
 import com.qipa.newboxproject.R
@@ -87,7 +87,9 @@ class WelFareFragment : BaseFragment<WelfareModel, FragmentWelFareBinding>() {
 
     override fun setVisibleToUser() {
         super.setVisibleToUser()
-        StatusNavigationUtils.setStatusBarColor(mActivity,resources.getColor(R.color.colorBlack333))
+        ImmersionBar.with(this)
+            .statusBarColor(R.color.colorBlack333)
+            .init()
     }
 
     override fun onBackPressed(): Boolean {

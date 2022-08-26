@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-        <com.cy.translucentparent.StatusBarView
+        <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
             android:background="@color/teal_200"

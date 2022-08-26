@@ -222,6 +222,10 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
+        android:id="@+id/gameDetailBigFragment"
+        android:name="com.qipa.newboxproject.ui.fragment.detail.GameDetailBigFragment"
+        android:label="GameDetailBigFragment" />
+    <fragment
         android:id="@+id/userEvaluateFragment"
         android:name="com.qipa.newboxproject.ui.fragment.detail.UserEvaluateFragment"
         android:label="UserEvaluateFragment" />
@@ -326,6 +330,14 @@
     <action
         android:id="@+id/action_to_gameDetailFragment"
         app:destination="@id/gameDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <action
+        android:id="@+id/action_to_gameDetailbigFragment"
+        app:destination="@id/gameDetailBigFragment"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
