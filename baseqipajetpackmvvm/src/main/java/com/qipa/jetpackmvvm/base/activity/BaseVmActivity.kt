@@ -1,18 +1,29 @@
 package com.qipa.jetpackmvvm.base.activity
 
+import android.content.res.Resources
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.cy.translucentparent.StatusNavigationActivity
+import com.alibaba.android.arouter.launcher.ARouter
+import com.arialyy.aria.core.Aria
+import com.gyf.immersionbar.ktx.immersionBar
+import com.qipa.jetpackmvvm.R
 import com.qipa.jetpackmvvm.base.viewmodel.BaseViewModel
 import com.qipa.jetpackmvvm.ext.getVmClazz
 import com.qipa.jetpackmvvm.network.manager.NetState
 import com.qipa.jetpackmvvm.network.manager.NetworkStateManager
+import com.qipa.jetpackmvvm.util.AndroidBugFixUtils
+import com.qipa.jetpackmvvm.util.ScreenAdaptUtil
+import com.qipa.jetpackmvvm.widget.LoadingDialog
 
 /**
  * 描述　: ViewModelActivity基类，把ViewModel注入进来了
  */
-abstract class BaseVmActivity<VM : BaseViewModel> : StatusNavigationActivity() {
+abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() , View.OnClickListener{
 
     /**
      * 是否需要使用DataBinding 供子类BaseVmDbActivity修改，用户请慎动
@@ -29,17 +40,23 @@ abstract class BaseVmActivity<VM : BaseViewModel> : StatusNavigationActivity() {
 
     abstract fun dismissLoading()
 
+    private lateinit var mLoadingDialog: LoadingDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+//        ARouter.getInstance().inject(this)
+        Aria.download(this).register()
         if (!isUserDb) {
             setContentView(layoutId())
         } else {
             initDataBind()
         }
+
+        mLoadingDialog = LoadingDialog(this, false)
+        initBaseBar()
         init(savedInstanceState)
 //        setNavigationBarColor(0xffff0000.toInt())
-        setStatusBarNoFillAndTransParent()
+//        setStatusBarNoFillAndTransParent()
     }
 
     private fun init(savedInstanceState: Bundle?) {
@@ -51,6 +68,17 @@ abstract class BaseVmActivity<VM : BaseViewModel> : StatusNavigationActivity() {
             onNetworkStateChanged(it)
         })
     }
+
+    private fun initBaseBar(){
+        immersionBar {
+            statusBarColor(R.color.colorPrimary)
+            navigationBarColor(R.color.colorPrimary)
+        }
+    }
+
+//    override fun getDelegate(): AppCompatDelegate {
+//        return SkinAppCompatDelegateImpl.get(this, this)
+//    }
 
     /**
      * 网络变化监听 子类重写
@@ -110,4 +138,31 @@ abstract class BaseVmActivity<VM : BaseViewModel> : StatusNavigationActivity() {
      * 供子类BaseVmDbActivity 初始化Databinding操作
      */
     open fun initDataBind() {}
+
+    override fun getResources(): Resources {
+        //假设 设计图宽度为360
+        return ScreenAdaptUtil.adaptWidth(super.getResources(), 360)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Aria.download(this).unRegister()
+        // 解决某些特定机型会触发的Android本身的Bug
+        AndroidBugFixUtils().fixSoftInputLeaks(this)
+    }
+
+
+    /**
+     * show 加载中
+     */
+    fun showVLoading() {
+        mLoadingDialog.showDialog(this, false)
+    }
+
+    /**
+     * dismiss loading dialog
+     */
+    fun dismissVLoading() {
+        mLoadingDialog.dismissDialog()
+    }
 }

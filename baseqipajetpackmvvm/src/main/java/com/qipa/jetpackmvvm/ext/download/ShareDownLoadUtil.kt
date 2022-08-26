@@ -3,19 +3,21 @@ package com.qipa.jetpackmvvm.ext.download
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
-import com.qipa.jetpackmvvm.base.appContext
 
 /**
  */
 object ShareDownLoadUtil {
 
     private var path = Build.BRAND + "_" + Build.MODEL + "_" + "download_sp"
-    private val sp: SharedPreferences
+    private lateinit var sp: SharedPreferences
+    private lateinit var context : Context
+    fun getShareDownLoadUtil(contexts: Context){
+          context = contexts
+          sp = context.getSharedPreferences(path, Context.MODE_PRIVATE)
+      }
 
 
-    init {
-        sp = appContext.getSharedPreferences(path, Context.MODE_PRIVATE)
-    }
+
 
 
     fun setPath(path: String) {

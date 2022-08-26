@@ -1,8 +1,9 @@
 package com.qipa.jetpackmvvm.ext.download
 
+import android.content.Context
+import com.arialyy.aria.core.download.DownloadTaskListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import com.qipa.jetpackmvvm.base.appContext
 import okhttp3.ResponseBody
 import java.io.File
 import java.io.RandomAccessFile
@@ -38,22 +39,22 @@ object FileTool {
         saveName: String,
         currentLength: Long,
         responseBody: ResponseBody,
-        loadListener: OnDownLoadListener
+        loadListener: DownloadTaskListener
     ) {
         val filePath = getFilePath(savePath, saveName)
         try {
             if (filePath == null) {
                 withContext(Dispatchers.Main) {
-                    loadListener.onDownLoadError(key, Throwable("mkdirs file [$savePath]  error"))
+//                    loadListener.onDownLoadError(key, Throwable("mkdirs file [$savePath]  error"))
                 }
                 DownLoadPool.remove(key)
                 return
             }
             //保存到文件
-            saveToFile(currentLength, responseBody, filePath, key, loadListener)
+//            saveToFile(currentLength, responseBody, filePath, key, loadListener)
         } catch (throwable: Throwable) {
             withContext(Dispatchers.Main) {
-                loadListener.onDownLoadError(key, throwable)
+//                loadListener.onDownLoadError(key, throwable)
             }
             DownLoadPool.remove(key)
         }
@@ -72,7 +73,7 @@ object FileTool {
         responseBody: ResponseBody,
         filePath: String,
         key: String,
-        loadListener: OnDownLoadListener
+        loadListener: DownloadTaskListener
     ) {
         val fileLength =
             getFileLength(currentLength, responseBody)
@@ -99,18 +100,18 @@ object FileTool {
                 //记录已经下载的长度
                 ShareDownLoadUtil.putLong(key, currentSaveLength)
                 withContext(Dispatchers.Main) {
-                    loadListener.onUpdate(
-                        key,
-                        progress,
-                        currentSaveLength,
-                        fileLength,
-                        currentSaveLength == fileLength
-                    )
+//                    loadListener.onUpdate(
+//                        key,
+//                        progress,
+//                        currentSaveLength,
+//                        fileLength,
+//                        currentSaveLength == fileLength
+//                    )
                 }
 
                 if (currentSaveLength == fileLength) {
                     withContext(Dispatchers.Main) {
-                        loadListener.onDownLoadSuccess(key, filePath,fileLength)
+//                        loadListener.onDownLoadSuccess(key, filePath,fileLength)
                     }
                     DownLoadPool.remove(key)
                 }
@@ -191,9 +192,9 @@ object FileTool {
      * 获取App文件的根路径
      * @return String
      */
-    fun getBasePath(): String {
-        var p: String? = appContext.getExternalFilesDir(null)?.path
-        val f: File? = appContext.getExternalFilesDir(null)
+    fun getBasePath(context : Context): String {
+        var p: String? = context.getExternalFilesDir(null)?.path
+        val f: File? = context.getExternalFilesDir(null)
         if (null != f) {
             p = f.absolutePath
         }

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.arialyy.aria.core.Aria
 import com.qipa.jetpackmvvm.base.viewmodel.BaseViewModel
 import com.qipa.jetpackmvvm.ext.getVmClazz
 import com.qipa.jetpackmvvm.network.manager.NetState
@@ -56,6 +57,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         isFirst = true
         mViewModel = createViewModel()
+        Aria.download(this).register()
         initView(savedInstanceState)
         createObserver()
         registorDefUIChange()
@@ -191,6 +193,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Aria.download(this).unRegister()
         handler.removeCallbacksAndMessages(null)
     }
 }

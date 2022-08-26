@@ -1,5 +1,6 @@
 package com.qipa.jetpackmvvm.ext.download
 
+import com.arialyy.aria.core.download.DownloadTaskListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.isActive
@@ -18,14 +19,14 @@ object DownLoadPool {
     private val pathMap: ConcurrentHashMap<String, String> = ConcurrentHashMap()
 
     //监听
-    private val listenerHashMap: ConcurrentHashMap<String, OnDownLoadListener> = ConcurrentHashMap()
+    private val listenerHashMap: ConcurrentHashMap<String, DownloadTaskListener> = ConcurrentHashMap()
 
     fun add(key: String, job: CoroutineScope) {
         scopeMap[key] = job
     }
 
     //监听
-    fun add(key: String, loadListener: OnDownLoadListener) {
+    fun add(key: String, loadListener: DownloadTaskListener) {
         listenerHashMap[key] = loadListener
     }
 
@@ -60,7 +61,7 @@ object DownLoadPool {
         return scopeMap[key]
     }
 
-    fun getListenerFromKey(key: String): OnDownLoadListener? {
+    fun getListenerFromKey(key: String): DownloadTaskListener? {
         return listenerHashMap[key]
     }
 
@@ -68,7 +69,7 @@ object DownLoadPool {
         return pathMap[key]
     }
 
-    fun getListenerMap(): ConcurrentHashMap<String, OnDownLoadListener> {
+    fun getListenerMap(): ConcurrentHashMap<String, DownloadTaskListener> {
         return listenerHashMap
     }
 

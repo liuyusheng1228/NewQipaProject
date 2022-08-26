@@ -1,6 +1,7 @@
 package com.qipa.jetpackmvvm.network.interceptor
 
-import com.qipa.jetpackmvvm.base.appContext
+import android.content.Context
+import com.qipa.jetpackmvvm.network.NetworkUtil
 import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -9,16 +10,18 @@ import okhttp3.Response
  * 描述　: 缓存拦截器
  * @param day 缓存天数 默认7天
  */
-class CacheInterceptor(var day: Int = 7) : Interceptor {
+class CacheInterceptor(var contexts: Context,var day: Int = 7) : Interceptor {
+
+
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
-        if (!com.qipa.jetpackmvvm.network.NetworkUtil.isNetworkAvailable(appContext)) {
+        if (!NetworkUtil.isNetworkAvailable(contexts)) {
             request = request.newBuilder()
                 .cacheControl(CacheControl.FORCE_CACHE)
                 .build()
         }
         val response = chain.proceed(request)
-        if (!com.qipa.jetpackmvvm.network.NetworkUtil.isNetworkAvailable(appContext)) {
+        if (!NetworkUtil.isNetworkAvailable(contexts)) {
             val maxAge = 60 * 60
             response.newBuilder()
                 .removeHeader("Pragma")

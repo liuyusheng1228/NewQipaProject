@@ -18,15 +18,19 @@
             android:value="360" />
         <activity
             android:name="com.qipa.qipaimbase.image.ImageCheckActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.qipa.qipaimbase.chat.chatset.ChatSetActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.qipa.qipaimbase.chat.ChatSingleActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.qipa.qipaimbase.chat.ChatGroupActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
 <!--        <activity-->
 <!--            android:name="com.momo.demo.main.groupinfo.GroupInfoActivity"-->

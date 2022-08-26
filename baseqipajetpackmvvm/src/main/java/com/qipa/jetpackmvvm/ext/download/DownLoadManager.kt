@@ -1,6 +1,8 @@
 package com.qipa.jetpackmvvm.ext.download
 
 import android.os.Looper
+import com.arialyy.aria.core.Aria
+import com.arialyy.aria.core.download.DownloadTaskListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
@@ -9,12 +11,15 @@ import com.qipa.jetpackmvvm.ext.util.logi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import java.io.File
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 /**
  */
 
 object DownLoadManager {
+
+    private var taskId : Long? = null
     private val retrofitBuilder by lazy {
         Retrofit.Builder()
             .baseUrl("https://www.baidu.com")
@@ -41,7 +46,7 @@ object DownLoadManager {
         savePath: String,
         saveName: String,
         reDownload: Boolean = false,
-        loadListener: OnDownLoadListener
+        loadListener: DownloadTaskListener
     ) {
         withContext(Dispatchers.IO) {
             doDownLoad(tag, url, savePath, saveName, reDownload, loadListener, this)
@@ -69,7 +74,11 @@ object DownLoadManager {
      */
     fun pause(key: String) {
         val listener = DownLoadPool.getListenerFromKey(key)
-        listener?.onDownLoadPause(key)
+        taskId?.let {
+            Aria.download(this)
+                .load(it)     //读取任务id
+                .stop()
+        };
         DownLoadPool.pause(key)
     }
 
@@ -107,7 +116,7 @@ object DownLoadManager {
         savePath: String,
         saveName: String,
         reDownload: Boolean,
-        loadListener: OnDownLoadListener,
+        loadListener: DownloadTaskListener,
         coroutineScope: CoroutineScope
     ) {
         //判断是否已经在队列中
@@ -122,14 +131,14 @@ object DownLoadManager {
 
         if (saveName.isEmpty()) {
             withContext(Dispatchers.Main) {
-                loadListener.onDownLoadError(tag, Throwable("save name is Empty"))
+                loadListener.onTaskFail(null, Throwable("save name is Empty") as Exception?)
             }
             return
         }
 
         if (Looper.getMainLooper().thread == Thread.currentThread()) {
             withContext(Dispatchers.Main) {
-                loadListener.onDownLoadError(tag, Throwable("current thread is in main thread"))
+                loadListener.onTaskFail(null, Throwable("current thread is in main thread")as Exception?)
             }
             return
         }
@@ -142,7 +151,7 @@ object DownLoadManager {
         }
         if (file.exists()&&currentLength == 0L && !reDownload) {
             //文件已存在了
-            loadListener.onDownLoadSuccess(tag, file.path, file.length())
+//            loadListener.onDownLoadSuccess(tag, file.path, file.length())
             return
         }
         "startDownLoad current $currentLength".logi()
@@ -154,7 +163,7 @@ object DownLoadManager {
             DownLoadPool.add(tag, loadListener)
 
             withContext(Dispatchers.Main) {
-                loadListener.onDownLoadPrepare(key = tag)
+//                loadListener.(key = tag)
             }
             val response = retrofitBuilder.create(DownLoadService::class.java)
                 .downloadFile("bytes=$currentLength-", url)
@@ -162,10 +171,10 @@ object DownLoadManager {
             if (responseBody == null) {
                 "responseBody is null".logi()
                 withContext(Dispatchers.Main) {
-                    loadListener.onDownLoadError(
-                        key = tag,
-                        throwable = Throwable("responseBody is null please check download url")
-                    )
+//                    loadListener.onDownLoadError(
+//                        key = tag,
+//                        throwable = Throwable("responseBody is null please check download url")
+//                    )
                 }
                 DownLoadPool.remove(tag)
                 return
@@ -174,13 +183,18 @@ object DownLoadManager {
                 tag,
                 savePath,
                 saveName,
-                currentLength,
+                currentLength as Long,
                 responseBody,
                 loadListener
             )
+             taskId = Aria.download(loadListener)
+                .load(url) //读取下载地址
+                .setFilePath(savePath) //设置文件保存的完整路径
+                .create() //创建并启动下载
+
         } catch (throwable: Throwable) {
             withContext(Dispatchers.Main) {
-                loadListener.onDownLoadError(key = tag, throwable = throwable)
+//                loadListener.onDownLoadError(key = tag, throwable = throwable)
             }
             DownLoadPool.remove(tag)
         }

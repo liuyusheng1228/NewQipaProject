@@ -34,13 +34,13 @@ android {
 
 dependencies {
 
-    api 'androidx.appcompat:appcompat:1.4.0'
-    api 'com.google.android.material:material:1.4.0'
-    api 'androidx.constraintlayout:constraintlayout:2.1.2'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api AndroidX.AppCompat
+    api Android.Material
+    api AndroidX.ConstraintLayout
+    testImplementation Android.Junit
+    androidTestImplementation AndroidX.TestExtJunit
+    androidTestImplementation AndroidX.TestEspresso
 
-    api 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+    api GitHub.AndroidAutoSize
 
 }
