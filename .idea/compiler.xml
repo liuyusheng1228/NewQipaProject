@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="11">
+      <module name="NewBoxProject.baseqipajetpackmvvm.ConstraintLayoutCompat" target="11" />
+      <module name="NewBoxProject.baseqipajetpackmvvm.PaintedSkin" target="11" />
+      <module name="NewBoxProject.baseqipajetpackmvvm.Plugin.AopPlugin" target="11" />
+      <module name="NewBoxProject.baseqipajetpackmvvm.Plugin.Base-Compiler" target="15" />
+      <module name="NewBoxProject.baseqipajetpackmvvm.Plugin.StandardPlugin" target="11" />
+      <module name="NewBoxProject.baseqipajetpackmvvm.Plugin.TypefacePlugin" target="11" />
+      <module name="NewBoxProject.Lib_Skin.ConstraintLayoutCompat" target="11" />
+      <module name="NewBoxProject.Lib_Skin.PaintedSkin" target="11" />
+      <module name="NewBoxProject.Lib_Skin.Plugin.AopPlugin" target="11" />
+      <module name="NewBoxProject.Lib_Skin.Plugin.Base-Compiler" target="15" />
+      <module name="NewBoxProject.Lib_Skin.Plugin.StandardPlugin" target="11" />
+      <module name="NewBoxProject.Lib_Skin.Plugin.TypefacePlugin" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidSdk/platforms/android-31/data/res/layout/list_content.xml" value="0.276268115942029" />
+        <entry key="..\:/NewBoxProject/Bcore/src/main/res/layout/activity_launcher.xml" value="0.24320652173913043" />
         <entry key="..\:/NewBoxProject/app/src/main/res/drawable/bg_button_2_round_10dp.xml" value="0.21822916666666667" />
         <entry key="..\:/NewBoxProject/app/src/main/res/drawable/bg_button_2_round_2dp.xml" value="0.21770833333333334" />
         <entry key="..\:/NewBoxProject/app/src/main/res/drawable/bg_button_3_round_2dp.xml" value="0.21770833333333334" />
@@ -50,6 +51,7 @@
         <entry key="..\:/NewBoxProject/app/src/main/res/drawable/shape_btn_grey_game_bg.xml" value="0.1953125" />
         <entry key="..\:/NewBoxProject/app/src/main/res/drawable/shape_btn_grey_miancolor_bg_4.xml" value="0.22962962962962963" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/activity_ceshi_log.xml" value="0.346875" />
+        <entry key="..\:/NewBoxProject/app/src/main/res/layout/activity_down_app.xml" value="0.361671469740634" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/activity_error.xml" value="0.2046875" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/activity_home.xml" value="0.19010416666666666" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
@@ -63,6 +65,7 @@
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/banner_itemwelcome.xml" value="0.2046875" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/demo_row_notification.xml" value="0.16304347826086957" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/demo_row_recall_message.xml" value="0.16304347826086957" />
+        <entry key="..\:/NewBoxProject/app/src/main/res/layout/detail_back.xml" value="0.18333333333333332" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/dialog_input_text_msg.xml" value="0.1" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/dialog_third_login.xml" value="0.11911231884057971" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/flow_layout.xml" value="0.2015625" />
@@ -85,6 +88,7 @@
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/fragment_download.xml" value="0.16304347826086957" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/fragment_evaluate.xml" value="0.2246376811594203" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/fragment_fullscreen.xml" value="0.2046875" />
+        <entry key="..\:/NewBoxProject/app/src/main/res/layout/fragment_game_big_detail.xml" value="0.2807971014492754" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/fragment_game_detail.xml" value="0.24003623188405798" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/fragment_home.xml" value="0.276268115942029" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/fragment_hot.xml" value="0.23854166666666668" />
@@ -171,7 +175,11 @@
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_empty.xml" value="0.2015625" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_error.xml" value="0.2046875" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_fotter_loadmore.xml" value="0.2015625" />
+        <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_func_in_ucs.xml" value="0.2807971014492754" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_loading.xml" value="0.2015625" />
+        <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_uc_content.xml" value="0.2871376811594203" />
+        <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_uc_head_bg.xml" value="0.18704710144927536" />
+        <entry key="..\:/NewBoxProject/app/src/main/res/layout/layout_uc_head_middle.xml" value="0.37720111214087115" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/real_name_authentication.xml" value="0.16304347826086957" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/update_app_alert.xml" value="0.2046875" />
         <entry key="..\:/NewBoxProject/app/src/main/res/layout/view_seemore.xml" value="0.18333333333333332" />
@@ -186,6 +194,18 @@
         <entry key="..\:/NewBoxProject/app/src/main/res/menu/web_menu.xml" value="0.2046875" />
         <entry key="..\:/NewBoxProject/app/src/main/res/xml/provider_paths.xml" value="0.1983695652173913" />
         <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/drawable/quick_ic_close.xml" value="0.21944444444444444" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/drawable/shape_load_bg.xml" value="0.20572916666666666" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_func_in_uc.xml" value="0.2807971014492754" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_func_in_ucs.xml" value="0.2740036231884058" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_loading_view.xml" value="0.18958333333333333" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_content.xml" value="0.2807971014492754" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_contents.xml" value="0.2740036231884058" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_head_bg.xml" value="0.2807971014492754" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_head_bgs.xml" value="0.2740036231884058" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_head_middle.xml" value="0.2807971014492754" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_head_middles.xml" value="0.2740036231884058" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_head_title.xml" value="0.2807971014492754" />
+        <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/layout_uc_head_titles.xml" value="0.2740036231884058" />
         <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/quick_item_upload_img.xml" value="0.12436676798378926" />
         <entry key="..\:/NewBoxProject/baseqipajetpackmvvm/src/main/res/layout/quick_picture_upload_view.xml" value="0.10207700101317123" />
         <entry key="..\:/NewBoxProject/jiaozivideoplayer/src/main/res/layout/jz_dialog_progress.xml" value="0.1757852077001013" />

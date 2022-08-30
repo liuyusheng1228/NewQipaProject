@@ -47,7 +47,7 @@ dependencies {
     annotationProcessor GitHub.GlideCompiler
     api GitHub.Protobuf
     implementation project(":opuslib")
-    implementation project(":qipanetwork")
+//    implementation project(":qipanetwork")
     api GitHub.OkHttp
     api GitHub.Okio
 }

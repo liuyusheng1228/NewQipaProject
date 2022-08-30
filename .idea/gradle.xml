@@ -11,11 +11,18 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Bcore" />
+            <option value="$PROJECT_DIR$/Bcore/black-fake" />
+            <option value="$PROJECT_DIR$/Bcore/black-hook" />
+            <option value="$PROJECT_DIR$/Bcore/pine-core" />
+            <option value="$PROJECT_DIR$/Bcore/pine-xposed" />
+            <option value="$PROJECT_DIR$/Bcore/pine-xposed-res" />
+            <option value="$PROJECT_DIR$/android-mirror" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baseqipajetpackmvvm" />
+            <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/opuslib" />
             <option value="$PROJECT_DIR$/qipaImBase" />
-            <option value="$PROJECT_DIR$/qipanetwork" />
             <option value="$PROJECT_DIR$/qipavideoplayer" />
           </set>
         </option>

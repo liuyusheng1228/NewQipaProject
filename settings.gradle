@@ -1,9 +1,16 @@
 
 rootProject.name = "NewBoxProject"
 include ':app'
-//include ':qipanetwork'
+include ':Bcore'
+//include ':blurkit'
 include 'baseqipajetpackmvvm'
 include ':qipaImBase'
 include ':opuslib'
-include ':qipanetwork'
+//include ':qipanetwork'
 include ':qipavideoplayer'
+include ':Bcore:black-fake'
+include ':Bcore:black-hook'
+include ':Bcore:pine-xposed'
+include ':Bcore:pine-core'
+include ':Bcore:pine-xposed-res'
+include ':android-mirror'
