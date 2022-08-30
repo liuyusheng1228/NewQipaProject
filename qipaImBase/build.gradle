@@ -46,6 +46,9 @@ dependencies {
     api GitHub.Glide
     annotationProcessor GitHub.GlideCompiler
     api GitHub.Protobuf
+    api AndroidX.AppCompat
+    api Android.Material
+    api AndroidX.ConstraintLayout
     implementation project(":opuslib")
 //    implementation project(":qipanetwork")
     api GitHub.OkHttp
