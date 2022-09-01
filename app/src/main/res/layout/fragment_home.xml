@@ -8,21 +8,23 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/teal_200"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
             android:background="@color/teal_200"
             />
         <LinearLayout
+            android:id="@+id/mian_lin"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/dp_3"
+            android:layout_marginTop="@dimen/dp_43"
             android:layout_marginLeft="@dimen/dp_15"
-
             android:layout_height="wrap_content">
             <RelativeLayout
                 android:id="@+id/home_search"
@@ -88,7 +90,11 @@
                     android:visibility="invisible" />
             </RelativeLayout>
         </LinearLayout>
-        <include layout="@layout/include_viewpager" />
+        <include layout="@layout/include_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_83"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

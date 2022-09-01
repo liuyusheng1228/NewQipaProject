@@ -59,8 +59,9 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     override fun onResume() {
         super.onResume()
         immersionBar {
-            statusBarColor(R.color.colorPrimary)
-            navigationBarColor(R.color.colorPrimary)
+            fullScreen(true)
+            statusBarColor(R.color.transparent)
+            navigationBarColor(R.color.transparent)
         }
     }
 

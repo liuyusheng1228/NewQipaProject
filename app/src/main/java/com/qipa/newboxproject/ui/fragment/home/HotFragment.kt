@@ -61,11 +61,11 @@ class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() {
         }
     }
     override fun initView(savedInstanceState: Bundle?) {
-        loadsir = loadServiceInit(swipeRefreshs){
-            loadsir.showLoading()
-            requestHotViewModel.getBannerData()
-
-        }
+//        loadsir = loadServiceInit(swipeRefreshs){
+//            loadsir.showLoading()
+//            requestHotViewModel.getBannerData()
+//
+//        }
 
         val header: TransformersLayout<Nav> = tab_show_up as TransformersLayout<Nav>
         header.apply(null).addOnTransformersItemClickListener(object :
@@ -274,9 +274,9 @@ class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() {
     override fun lazyLoadData() {
         super.lazyLoadData()
         //设置界面 加载中
-        loadsir.showLoading()
+//        loadsir.showLoading()
         //请求轮播图数据
-        requestHotViewModel.getBannerData()
+//        requestHotViewModel.getBannerData()
         //请求列表数据
 //        requestHomeViewModel.getHomeData(true)
 

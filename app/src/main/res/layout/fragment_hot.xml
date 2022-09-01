@@ -8,14 +8,19 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.core.widget.NestedScrollView
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            >
+            <com.qipa.jetpackmvvm.widget.ObservableScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/windowBackground">
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                >
 
 
 
@@ -80,7 +85,7 @@
                     app:layout_behavior="com.qipa.newboxproject.app.weight.recyclerview.FatScrollAwareFABBehavior" />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
             </RelativeLayout>
-            </androidx.core.widget.NestedScrollView>
+            </com.qipa.jetpackmvvm.widget.ObservableScrollView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
