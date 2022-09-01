@@ -331,7 +331,81 @@ fun MagicIndicator.bindViewPager2(
         }
     })
 }
+fun MagicIndicator.bindViewPager21(color : String,
+    viewPager: ViewPager2,
+    mStringList: List<String> = arrayListOf(),
+    show: Boolean ,
+    action: (index: Int) -> Unit = {}) {
+    val commonNavigator = CommonNavigator(App.getContext())
+    commonNavigator.adapter = object : CommonNavigatorAdapter() {
 
+        override fun getCount(): Int {
+            return  mStringList.size
+        }
+        override fun getTitleView(context: Context, index: Int): IPagerTitleView {
+            return ScaleTransitionPagerTitleView(App.getContext()).apply {
+                //设置文本
+                text = mStringList[index].toHtml()
+                //字体大小
+                textSize = 20f
+                //未选中颜色
+                normalColor = Color.parseColor(color)
+                //选中颜色
+                selectedColor = Color.parseColor(color)
+                //点击事件
+                setOnClickListener {
+                    viewPager.currentItem = index
+                    action.invoke(index)
+                }
+
+                getPaint().setFakeBoldText(true);
+
+            }
+        }
+        override fun getIndicator(context: Context): IPagerIndicator {
+            return LinePagerIndicator(context).apply {
+                mode = LinePagerIndicator.MODE_EXACTLY
+                //线条的宽高度
+                if(show){
+                    lineHeight = UIUtil.dip2px(App.getContext(), 3.0).toFloat()
+                    lineWidth = UIUtil.dip2px(App.getContext(), 30.0).toFloat()
+                }else{
+                    lineHeight = 0f
+                    lineWidth = 0f
+                }
+                //线条的圆角
+                roundRadius = UIUtil.dip2px(App.getContext(), 6.0).toFloat()
+                startInterpolator = AccelerateInterpolator()
+                endInterpolator = DecelerateInterpolator(2.0f)
+                //线条的颜色
+                setColors(Color.WHITE)
+            }
+        }
+    }
+    this.navigator = commonNavigator
+
+    viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+            this@bindViewPager21.onPageSelected(position)
+            action.invoke(position)
+        }
+
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+            super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            this@bindViewPager21.onPageScrolled(position, positionOffset, positionOffsetPixels)
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {
+            super.onPageScrollStateChanged(state)
+            this@bindViewPager21.onPageScrollStateChanged(state)
+        }
+    })
+}
 fun MagicIndicator.bindViewPager3(
     viewPager: ViewPager2,
     mStringList: List<String> = arrayListOf(),

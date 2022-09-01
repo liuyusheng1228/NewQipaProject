@@ -3,14 +3,18 @@ import com.qipa.newboxproject.R
 import android.os.Bundle
 
 import android.view.View
+import android.view.ViewTreeObserver
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
+import com.blankj.utilcode.util.ScreenUtils
+import com.gyf.immersionbar.ktx.immersionBar
 import com.kingja.loadsir.core.LoadService
 import com.qipa.jetpackmvvm.ext.nav
 import com.qipa.jetpackmvvm.ext.navigateAction
 import com.qipa.jetpackmvvm.ext.parseState
+import com.qipa.jetpackmvvm.widget.ObservableScrollView
 import com.qipa.newboxproject.app.appViewModel
 import com.qipa.newboxproject.app.base.BaseFragment
 import com.qipa.newboxproject.app.ext.*
@@ -35,8 +39,12 @@ import kotlinx.android.synthetic.main.include_recyclerview.*
 import com.qipa.newboxproject.data.model.bean.Nav
 import com.qipa.newboxproject.data.model.bean.NavAdapterViewHolder
 import kotlinx.android.synthetic.main.fragment_hot.*
+import com.qipa.newboxproject.ui.activity.MainActivity
 
-class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() {
+
+
+
+class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() , ObservableScrollView.OnObservableScrollViewListener{
     //适配器
     private val articleAdapter: AriticleAdapter by lazy { AriticleAdapter(arrayListOf(), true) }
 
@@ -47,6 +55,8 @@ class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() {
     private val mListAriticleResponse: ArrayList<AriticleResponse> = arrayListOf()
 
     private var ariticleResponse : AriticleResponse? = null
+
+    private var mHeight: Int = 0
 
     //recyclerview的底部加载view 因为在首页要动态改变他的颜色，所以加了他这个字段
     private lateinit var footView: DefineLoadMoreView
@@ -94,6 +104,19 @@ class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() {
             })
             it.initFloatBtn(hot_floatbtn)
         }
+        //获取标题栏高度
+        //获取标题栏高度
+        val viewTreeObserver: ViewTreeObserver = iv_test.getViewTreeObserver()
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                iv_test.getViewTreeObserver().removeOnGlobalLayoutListener(this)
+                mHeight = iv_test.getHeight() - com.qipa.jetpackmvvm.util.ConvertUtils.dip2px(mActivity,
+                    30.0
+                )  //这里取的高度应该为图片的高度-标题栏
+                //注册滑动监听
+                hot_scrollview.setOnObservableScrollViewListener(this@HotFragment)
+            }
+        })
         loadData()
         swipeRefreshs.init {
             swipeRefreshs.isRefreshing = false
@@ -329,6 +352,24 @@ class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() {
 
     override fun onBackPressed(): Boolean {
         return false
+    }
+
+    override fun onObservableScrollViewListener(l: Int, t: Int, oldl: Int, oldt: Int) {
+        if (t <= 0) {
+            LiveDataBus.instance.value = Event(FlashEvent(FlashEvent.EVENT_TEST,0))
+            //顶部图处于最顶部，标题栏透明
+//            mHeaderContent.setBackgroundColor(Color.argb(0, 48, 63, 159))
+        } else if (t > 0 && t < mHeight) {
+            //滑动过程中，渐变
+            val scale = t.toFloat() / mHeight //算出滑动距离比例
+            val alpha = 255 * scale //得到透明度
+            LiveDataBus.instance.value = Event(FlashEvent(FlashEvent.EVENT_TEST,1))
+//            mHeaderContent.setBackgroundColor(Color.argb(alpha.toInt(), 48, 63, 159))
+        } else {
+            LiveDataBus.instance.value = Event(FlashEvent(FlashEvent.EVENT_TEST,2))
+            //过顶部图区域，标题栏定色
+//            mHeaderContent.setBackgroundColor(Color.argb(255, 48, 63, 159))
+        }
     }
 
 
