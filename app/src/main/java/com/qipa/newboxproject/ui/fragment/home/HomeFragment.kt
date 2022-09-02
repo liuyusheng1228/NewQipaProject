@@ -83,7 +83,7 @@ class HomeFragment : BaseFragment<HomeModel, FragmentHomeBinding>() {
                         statusBarColor(R.color.transparent)
                         navigationBarColor(R.color.transparent)
 //                        fitsSystemWindows(true)
-                        flymeOSStatusBarFontColor(R.color.white)
+                        autoStatusBarDarkModeEnable(true,0.2f)
                     }
                     magic_indicator.bindViewPager21("#FFFFFFFF",view_pager, mDataList,false)
                     mian_lin.setBackgroundColor(resources.getColor(R.color.tranaction))
@@ -98,6 +98,7 @@ class HomeFragment : BaseFragment<HomeModel, FragmentHomeBinding>() {
                         fullScreen(true)
                         statusBarColor(R.color.white)
                         navigationBarColor(R.color.white)
+                        autoStatusBarDarkModeEnable(true,0.2f)
                         flymeOSStatusBarFontColor(R.color.black)
                     }
                     magic_indicator.bindViewPager21("#FF000000",view_pager, mDataList,false)

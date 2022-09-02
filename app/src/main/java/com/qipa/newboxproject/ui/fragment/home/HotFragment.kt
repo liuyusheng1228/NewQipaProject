@@ -14,6 +14,7 @@ import com.kingja.loadsir.core.LoadService
 import com.qipa.jetpackmvvm.ext.nav
 import com.qipa.jetpackmvvm.ext.navigateAction
 import com.qipa.jetpackmvvm.ext.parseState
+import com.qipa.jetpackmvvm.util.GlideUtils
 import com.qipa.jetpackmvvm.widget.ObservableScrollView
 import com.qipa.newboxproject.app.appViewModel
 import com.qipa.newboxproject.app.base.BaseFragment
@@ -105,14 +106,11 @@ class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() , ObservableScr
             it.initFloatBtn(hot_floatbtn)
         }
         //获取标题栏高度
-        //获取标题栏高度
         val viewTreeObserver: ViewTreeObserver = iv_test.getViewTreeObserver()
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 iv_test.getViewTreeObserver().removeOnGlobalLayoutListener(this)
-                mHeight = iv_test.getHeight() - com.qipa.jetpackmvvm.util.ConvertUtils.dip2px(mActivity,
-                    30.0
-                )  //这里取的高度应该为图片的高度-标题栏
+                mHeight = iv_test.getHeight() -300  //这里取的高度应该为图片的高度-标题栏
                 //注册滑动监听
                 hot_scrollview.setOnObservableScrollViewListener(this@HotFragment)
             }
@@ -307,6 +305,11 @@ class HotFragment : BaseFragment<HotModel, FragmentHotBinding>() , ObservableScr
 
     override fun setVisibleToUser() {
         super.setVisibleToUser()
+    }
+
+    override fun initData() {
+        super.initData()
+        GlideUtils.loadImage(mActivity,"https://tenfei05.cfp.cn/creative/vcg/800/new/VCG211168385804.gif",iv_test)
     }
 
     override fun createObserver() {

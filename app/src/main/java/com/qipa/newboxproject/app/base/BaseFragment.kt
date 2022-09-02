@@ -62,6 +62,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
             fullScreen(true)
             statusBarColor(R.color.transparent)
             navigationBarColor(R.color.transparent)
+            autoStatusBarDarkModeEnable(true,0.2f)
         }
     }
 

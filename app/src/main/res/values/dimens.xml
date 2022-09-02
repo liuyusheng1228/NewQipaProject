@@ -5,6 +5,7 @@
     <dimen name="design_bottom_navigation_margin">12dp</dimen>
     <!-- dp and sp values, must be defind in this file! -->
     <!-- view size,you can add if there is no one -->
+    <dimen name="dp_m_80">-80dp</dimen>
     <dimen name="dp_m_60">-60dp</dimen>
     <dimen name="dp_m_30">-30dp</dimen>
     <dimen name="dp_m_20">-20dp</dimen>
@@ -383,10 +384,14 @@
     <dimen name="dp_360">360dp</dimen>
     <dimen name="dp_365">365dp</dimen>
     <dimen name="dp_370">370dp</dimen>
+    <dimen name="dp_380">380dp</dimen>
+    <dimen name="dp_390">390dp</dimen>
     <dimen name="dp_400">400dp</dimen>
+    <dimen name="dp_405">405dp</dimen>
     <dimen name="dp_410">410dp</dimen>
     <dimen name="dp_422">422dp</dimen>
     <dimen name="dp_431">431dp</dimen>
+    <dimen name="dp_450">450dp</dimen>
     <dimen name="dp_472">472dp</dimen>
     <dimen name="dp_500">500dp</dimen>
     <dimen name="dp_600">600dp</dimen>

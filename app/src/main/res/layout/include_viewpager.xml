@@ -13,7 +13,6 @@
         android:id="@+id/viewpager_linear"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:background="@color/transparent"
         android:layout_marginTop="@dimen/dp_63"
         >
 
